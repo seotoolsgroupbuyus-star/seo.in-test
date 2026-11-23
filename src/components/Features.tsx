@@ -1,43 +1,9 @@
+import homeSections from '../../content/home-sections.json';
 import { Zap, Shield, Clock, Headphones, Globe, Lock } from "lucide-react";
 
-const features = [
-  {
-    title: "Instant Access",
-    description: "Get immediate access to all tools right after your purchase. No waiting time.",
-    icon: Zap,
-    color: "text-yellow-500"
-  },
-  {
-    title: "99.9% Uptime",
-    description: "Our proprietary cloud infrastructure ensures your tools are always available when you need them.",
-    icon: Shield,
-    color: "text-blue-500"
-  },
-  {
-    title: "24/7 Live Support",
-    description: "Our dedicated support team is available around the clock to help you with any technical issues.",
-    icon: Headphones,
-    color: "text-purple-500"
-  },
-  {
-    title: "Secure Browsing",
-    description: "We use advanced encryption and secure extensions to protect your data and privacy.",
-    icon: Lock,
-    color: "text-green-500"
-  },
-  {
-    title: "Global Access",
-    description: "Access your tools from anywhere in the world with our high-speed global servers.",
-    icon: Globe,
-    color: "text-indigo-500"
-  },
-  {
-    title: "Regular Updates",
-    description: "We constantly update our tool list and infrastructure to provide the best experience.",
-    icon: Clock,
-    color: "text-red-500"
-  }
-];
+const featureIcons=[Zap, Shield, Headphones, Lock, Globe, Clock];
+const featureColors=['text-yellow-500','text-blue-500','text-purple-500','text-green-500','text-indigo-500','text-red-500'];
+const features=homeSections.features.items.map((item,index)=>({...item,icon:featureIcons[index%featureIcons.length],color:featureColors[index%featureColors.length]}));
 
 export function Features() {
   return (
