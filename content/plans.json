@@ -11,7 +11,9 @@
         "Simple design tools",
         "Learning resources",
         "Email support"
-      ]
+      ],
+      "popular": false,
+      "color": "blue"
     },
     {
       "name": "Growth Starter",
@@ -24,7 +26,9 @@
         "AI writing support",
         "Design & graphics tools",
         "Priority help"
-      ]
+      ],
+      "popular": true,
+      "color": "blue"
     },
     {
       "name": "Ahrefs Power Bundle",
@@ -37,7 +41,9 @@
         "Advanced audits & reports",
         "Content planning tools",
         "Faster support response"
-      ]
+      ],
+      "popular": false,
+      "color": "purple"
     },
     {
       "name": "Writer Toolkit",
@@ -50,7 +56,9 @@
         "Plagiarism style checks",
         "Content research tools",
         "Ready to publish templates"
-      ]
+      ],
+      "popular": false,
+      "color": "blue"
     },
     {
       "name": "Designer Pack",
@@ -63,7 +71,9 @@
         "Stock images and icons",
         "Video tools for reels",
         "Brand kit basics"
-      ]
+      ],
+      "popular": false,
+      "color": "purple"
     },
     {
       "name": "Mega All-Access",
@@ -76,7 +86,9 @@
         "E‑commerce research suite",
         "Learning platform access",
         "Best support priority"
-      ]
+      ],
+      "popular": false,
+      "color": "blue"
     }
   ]
 }
