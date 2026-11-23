@@ -6,7 +6,33 @@
     "savingsLabel": "Savings",
     "savingsValue": "$1,450/mo",
     "uptimeLabel": "Uptime",
-    "uptimeValue": "99.9%"
+    "uptimeValue": "99.9%",
+    "tools": [
+      {
+        "name": "Ahrefs",
+        "domain": "ahrefs.com"
+      },
+      {
+        "name": "SEMrush",
+        "domain": "semrush.com"
+      },
+      {
+        "name": "Canva",
+        "domain": "canva.com"
+      },
+      {
+        "name": "Grammarly",
+        "domain": "grammarly.com"
+      },
+      {
+        "name": "Jasper",
+        "domain": "jasper.ai"
+      },
+      {
+        "name": "Moz",
+        "domain": "moz.com"
+      }
+    ]
   },
   "comparison": {
     "toolColumn": "Premium Tool",
@@ -23,7 +49,21 @@
     "cta": "Get Instant Access",
     "extensionTitle": "SEO Hub Extension",
     "extensionBadge": "ONE-CLICK LOGIN",
-    "ctaUrl": "https://seogroupsbuy.com/users/signup"
+    "ctaUrl": "https://seogroupsbuy.com/users/signup",
+    "previewTools": [
+      {
+        "name": "Ahrefs",
+        "domain": "ahrefs.com"
+      },
+      {
+        "name": "SEMrush",
+        "domain": "semrush.com"
+      },
+      {
+        "name": "Moz Pro",
+        "domain": "moz.com"
+      }
+    ]
   },
   "status": {
     "uptimeLabel": "Avg Uptime",
@@ -53,5 +93,53 @@
     "requestButton": "Request a New Tool",
     "viewUrl": "/all-tools",
     "requestUrl": "https://wa.me/447845432224"
+  },
+  "product": {
+    "buyNow": "Buy Now",
+    "pricingHeading": "Pricing & Features",
+    "planColumn": "Plan",
+    "priceColumn": "Price",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "monthSuffix": "per month",
+    "yearSuffix": "per year",
+    "benefitColumn": "Benefit",
+    "helpsColumn": "How It Helps",
+    "whatIsPrefix": "What Is",
+    "overview": "Overview",
+    "whyTeams": "Why Teams Use It",
+    "keyBenefitsPrefix": "Key Benefits of",
+    "homeCrumb": "Home",
+    "toolsCrumb": "Tools"
+  },
+  "allTools": {
+    "heading": "All Tools",
+    "introBefore": "Browse",
+    "introAfter": "+ premium SEO, AI, writing, and design tools at group buy pricing. Search by name or explore by category.",
+    "searchPlaceholder": "Search tools..."
+  },
+  "chat": {
+    "heading": "Chat with us",
+    "replyTime": "Avg reply: a few minutes",
+    "whatsappLabel": "WhatsApp",
+    "whatsappDescription": "Chat with support",
+    "facebookLabel": "Facebook",
+    "facebookDescription": "Message our page",
+    "notConfigured": "Link not set yet",
+    "tip": "Tip: Press",
+    "tipSuffix": "to close.",
+    "openText": "Chat",
+    "closeText": "Close",
+    "channels": "WhatsApp / Facebook",
+    "whatsappUrl": "https://wa.me/447845432224",
+    "facebookUrl": ""
+  },
+  "pricing": {
+    "heading": "Choose Your Plan",
+    "description": "Choose the plan that fits your work. Pay monthly, keep it simple, and upgrade anytime as your projects grow. Every plan focuses on stable access to premium SEO tools.",
+    "available": "Available plans",
+    "popular": "Most Popular",
+    "perMonth": "/month",
+    "buyNow": "Buy Now"
   }
 }
