@@ -19,6 +19,7 @@ export type Product = {
   title: string;
   description: string;
   domain: string;
+  imageUrl?: string; // Optional Pages CMS uploaded product image
   category: ProductCategory;
   /** Monthly USD from STGB cart / buy link */
   priceMonthly: number;
