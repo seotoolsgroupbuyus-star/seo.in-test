@@ -36,7 +36,7 @@ for(const route of routes){
   assert(/<meta\s+name="description"/i.test(html),`Missing meta description: ${route}`);
   assert(/name="robots"\s+content="noindex,nofollow"/.test(html) || /name="robots"\s+content="index,follow"/.test(html),`Missing explicit robots on ${route}`);
   assert(/<h1\b/i.test(html),`No server-rendered H1: ${route}. React SSR may be broken.`);
-  const jsonlds=[...html.matchAll(/<script[^>]*type="application\\/ld\\+json"[^>]*>([\\s\\S]*?)<\\/script>/gi)].map(m=>JSON.parse(m[1]));
+  const jsonlds=[...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>JSON.parse(m[1]));
   if(route.startsWith('/tool/')||route==='/screaming-frog-website-audit-tool'){
     const product=products.find(p=>(p.slug==='screaming-frog-website-audit-tool'?'/'+p.slug:'/tool/'+p.slug)===route);
     const productLd=jsonlds.find(j=>j['@type']==='Product');
