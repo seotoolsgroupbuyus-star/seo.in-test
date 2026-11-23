@@ -45,10 +45,11 @@ for(let i=0;i<routes.length;i+=4){
   const extra=(b.links||[]).filter(x=>!(a.links||[]).includes(x));
   if(missing.length||extra.length)issues.push('links');
   if(a.images?.length!==b.images?.length)issues.push('image_count');
-  if((b.images||[]).some(x=>!x.loaded))issues.push('image_loading');
+  const previewOnlyBroken=(b.images||[]).filter((img,index)=>!img.loaded && a.images?.[index]?.loaded);
+  if(previewOnlyBroken.length)issues.push('preview_only_image_failure');
   if((b.jsonld||[]).some(x=>x.invalid))issues.push('invalid_schema');
   if(b.errors?.length)issues.push('browser_javascript');
-  return {route,issues,textRatio:Math.round(ratio*1000)/10,links:{missing:missing.slice(0,8),extra:extra.slice(0,8)},images:{live:a.images?.length||0,preview:b.images?.length||0},robots:{live:a.robots,preview:b.robots},errors:{live:a.error||null,preview:b.error||null}};
+  return {route,issues,textRatio:Math.round(ratio*1000)/10,links:{missing:missing.slice(0,8),extra:extra.slice(0,8)},images:{live:a.images?.length||0,preview:b.images?.length||0,previewOnlyBroken:previewOnlyBroken.map(x=>x.src).slice(0,8),liveBroken:(a.images||[]).filter(x=>!x.loaded).map(x=>x.src).slice(0,8),previewBroken:(b.images||[]).filter(x=>!x.loaded).map(x=>x.src).slice(0,8)},robots:{live:a.robots,preview:b.robots},errors:{live:a.error||null,preview:b.error||null}};
  }));
  results.push(...chunk);
 }
