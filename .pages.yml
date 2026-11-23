@@ -25,6 +25,9 @@ content:
       - name: domain
         label: Tool Domain
         type: string
+      - name: imageUrl
+        label: Optional Tool Image (upload)
+        type: image
       - name: category
         label: Category
         type: string
