@@ -1,3 +1,4 @@
+import cms from '../../content/home-extras.json';
 import { motion } from "motion/react";
 import { MousePointer2, Zap, ShieldCheck, Globe, Download } from "lucide-react";
 import {SHOP_SIGNUP_URL} from '../data/shopLinks';
@@ -14,22 +15,22 @@ export function AccessShowcase() {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm font-medium text-blue-400 mb-8">
               <Zap className="h-4 w-4" />
-              Instant One-Click Access
+              {cms.access.badge}
             </div>
             
             <h2 className="text-4xl md:text-6xl font-bold font-display mb-8 leading-[1.1]">
-              Easy Access System
+              {cms.access.heading}
             </h2>
             
             <p className="text-xl text-zinc-400 mb-10 leading-relaxed">
-              Stop dealing with login issues and constant rechecks. Open your dashboard, click the tool you need, and start working. This one click access setup is built for SEO tools group buy users who want speed without the headache.
+              {cms.access.description}
             </p>
 
             <div className="space-y-6 mb-10">
               {[
-                { icon: ShieldCheck, title: "Secure Session Bridge", desc: "Your work stays private and your session stays stable." },
-                { icon: Globe, title: "Multi-Region Support", desc: "Smooth access from different locations when you need it." },
-                { icon: Zap, title: "Fast Loading", desc: "Quick tool open times so audits and research do not slow you down." },
+                { icon: ShieldCheck, ...cms.access.items[0], desc:cms.access.items[0].description },
+                { icon: Globe, ...cms.access.items[1], desc:cms.access.items[1].description },
+                { icon: Zap, ...cms.access.items[2], desc:cms.access.items[2].description },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="h-10 w-10 rounded-xl bg-blue-600/10 flex items-center justify-center shrink-0">
