@@ -1,0 +1,24 @@
+{
+  "faqs": [
+    {
+      "question": "How does the group buy system actually work?",
+      "answer": "We use a proprietary cloud-bridge technology that allows multiple users to access a single premium account simultaneously without triggering security alerts or session conflicts. Each user gets a dedicated, isolated environment that feels exactly like a direct subscription."
+    },
+    {
+      "question": "Is my data private and secure?",
+      "answer": "Absolutely. We use AES-256 encryption for all session data. Your search history, project data, and keyword lists are isolated to your account and are never shared with other users or the tool providers."
+    },
+    {
+      "question": "What happens if a tool goes down?",
+      "answer": "Our automated monitoring system detects downtime within seconds. We maintain redundant accounts for every tool in our ecosystem. If one account fails, our load balancer automatically routes you to a fresh, active session instantly."
+    },
+    {
+      "question": "Can I use these tools for client projects?",
+      "answer": "Yes. All tools provided are full premium versions. You can export reports, download data, and use all features for your client work just as you would with a direct subscription."
+    },
+    {
+      "question": "Do you offer a refund if I'm not satisfied?",
+      "answer": "We offer a 24-hour 'No Questions Asked' refund policy. If you find that the tools don't meet your expectations within the first day, we'll refund your full payment immediately."
+    }
+  ]
+}
