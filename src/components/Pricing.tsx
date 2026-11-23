@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import {
   BarChart3,
   BookOpen,
@@ -154,14 +155,14 @@ export function Pricing({showIntro = true}: {showIntro?: boolean}) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">Choose Your Plan</h2>
+              <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">{labels.pricing.heading}</h2>
               <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-                Choose the plan that fits your work. Pay monthly, keep it simple, and upgrade anytime as your projects grow. Every plan focuses on stable access to premium SEO tools.
+                {labels.pricing.description}
               </p>
             </motion.div>
           </div>
         ) : (
-          <h2 className="sr-only">Available plans</h2>
+          <h2 className="sr-only">{labels.pricing.available}</h2>
         )}
 
         <div className={`grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto ${showIntro ? '' : 'mt-4'}`}>
@@ -191,7 +192,7 @@ export function Pricing({showIntro = true}: {showIntro?: boolean}) {
               <div className="mb-8">
                 <div className="flex items-baseline gap-1">
                   <span className="text-6xl font-bold font-display tracking-tighter">${plan.price}</span>
-                  <span className="text-zinc-500 font-medium">/month</span>
+                  <span className="text-zinc-500 font-medium">{labels.pricing.perMonth}</span>
                 </div>
               </div>
 
