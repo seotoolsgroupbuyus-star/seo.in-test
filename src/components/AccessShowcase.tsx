@@ -72,11 +72,7 @@ export function AccessShowcase() {
               </div>
 
               <div className="space-y-4">
-                {[
-                  { name: "Ahrefs", domain: "ahrefs.com" },
-                  { name: "SEMrush", domain: "semrush.com" },
-                  { name: "Moz Pro", domain: "moz.com" },
-                ].map((tool, i) => (
+                {labels.access.previewTools.map((tool, i) => (
                   <div key={i} className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center justify-between group hover:bg-white/10 transition-all">
                     <div className="flex items-center gap-4">
                       <div className="h-10 w-10 rounded-xl bg-white flex items-center justify-center p-2 shadow-lg">
