@@ -1,0 +1,29 @@
+name: Live vs Astro real mobile interaction parity
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/verify-interactions.mjs'
+      - '.github/workflows/verify-interactions.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --no-audit --no-fund playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Compare menu, chat, tool search and FAQ clicks
+        run: node scripts/verify-interactions.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-interaction-parity
+          path: interaction-report.json
+          if-no-files-found: ignore
