@@ -14,14 +14,14 @@ export function getStaticPaths(){
  };
 
  const routes=[...Object.entries(defaults).map(([path,[title,description]])=>({path,title:withBrandTitle(title),description})),
-  ...products.map(p=>({path:productPath(p.slug).slice(1),title:withBrandTitle(p.title),description:p.description})),
+  ...products.map(p=>({path:productPath(p.slug).slice(1),title:withBrandTitle(p.title),description:p.description,product:p})),
   ...staticPages.map(p=>({path:p.slug,title:withBrandTitle(p.title),description:p.description}))];
- return routes.map(({path,title,description})=>({params:{slug:path},props:{title,description,path}}));
+ return routes.map(({path,title,description,product})=>({params:{slug:path},props:{title,description,path,product}}));
 }
-const {path,title,description}=Astro.props;
+const {path,title,description,product}=Astro.props;
 const pathname='/'+path.replace(/^\/+|\/+$/g,'');
 const robots=import.meta.env.PUBLIC_PRODUCTION_INDEXABLE==='true'?'index,follow':'noindex,nofollow';
 ---
-<Page title={title} description={description} pathname={pathname} robots={robots}>
+<Page title={title} description={description} pathname={pathname} robots={robots} product={product}>
  <OriginalApp path={pathname} client:load />
 </Page>
