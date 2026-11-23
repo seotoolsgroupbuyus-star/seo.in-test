@@ -1,16 +1,9 @@
+import cms from '../../content/home-extras.json';
 import { motion } from "motion/react";
 import { TrendingDown, Check, X, ArrowRight } from "lucide-react";
 import {SHOP_SIGNUP_URL} from '../data/shopLinks';
 
-const comparisonData = [
-  { name: "Ahrefs Lite", original: 99, our: "Included" },
-  { name: "SEMrush Pro", original: 129, our: "Included" },
-  { name: "Moz Pro", original: 99, our: "Included" },
-  { name: "Canva Pro", original: 12, our: "Included" },
-  { name: "Grammarly Premium", original: 30, our: "Included" },
-  { name: "Jasper AI", original: 49, our: "Included" },
-  { name: "Envato Elements", original: 33, our: "Included" },
-];
+const comparisonData=cms.priceComparison.tools;
 
 export function PriceComparison() {
   const totalOriginal = comparisonData.reduce((acc, item) => acc + item.original, 0);
@@ -24,23 +17,23 @@ export function PriceComparison() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-bold font-display mb-6"
           >
-            Save More on SEO Tools Every Month
+            {cms.priceComparison.heading}
           </motion.h2>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            If you buy each SEO tool separately you end up paying hundreds every month. With our SEO group buy you get the same core features you need for audits, keywords, and competitor research at a price that makes sense.
+            {cms.priceComparison.description}
           </p>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
             <div className="glass-card rounded-[2.5rem] p-8 border-white/5">
-              <h3 className="text-2xl font-bold font-display mb-3">Affordable Access Without High Monthly Costs</h3>
+              <h3 className="text-2xl font-bold font-display mb-3">{cms.priceComparison.cards[0].heading}</h3>
               <p className="text-zinc-500 leading-relaxed">
-                Get stable access to the tools you need while your monthly cost stays low.
+                {cms.priceComparison.cards[0].description}
               </p>
             </div>
             <div className="glass-card rounded-[2.5rem] p-8 border-white/5">
-              <h3 className="text-2xl font-bold font-display mb-3">Get More Tools for Less</h3>
+              <h3 className="text-2xl font-bold font-display mb-3">{cms.priceComparison.cards[1].heading}</h3>
               <p className="text-zinc-500 leading-relaxed">
-                Use one plan to cover keyword research audits backlinks and daily reporting work.
+                {cms.priceComparison.cards[1].description}
               </p>
             </div>
           </div>
