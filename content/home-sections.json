@@ -1,0 +1,126 @@
+{
+  "testimonials": {
+    "heading": "Why Customers Trust Us",
+    "description": "Real marketers use our SEO tools group buy to research keywords, check backlinks, and deliver client reports on time. Here is what they say after switching from expensive subscriptions.",
+    "subheading": "Real User Feedback",
+    "items": [
+      {
+        "name": "Sarah Jenkins",
+        "role": "SEO Director at GrowthFlow",
+        "content": "Recently we started using seogroupbuy.in and it has improved our marketing work a lot.",
+        "rating": 5
+      },
+      {
+        "name": "Michael Chen",
+        "role": "Independent Consultant",
+        "content": "After joining seogroupbuy.in our agency tool cost reduced almost 90 percent. Now we use SEMrush Ahrefs and many other tools in one place.",
+        "rating": 5
+      },
+      {
+        "name": "Elena Rodriguez",
+        "role": "Head of Content at TechPulse",
+        "content": "This is my honest review. I searched many group buy sites but none were cooperative. seogroupbuy.in support was genuine and helpful.",
+        "rating": 5
+      },
+      {
+        "name": "Ali Raza",
+        "role": "Freelance SEO",
+        "content": "I am very satisfied with seogroupbuy.in. I have been using their services for a long time and the experience is consistently good.",
+        "rating": 5
+      },
+      {
+        "name": "Ayesha Khan",
+        "role": "Agency Ops",
+        "content": "I subscribed to their Semrush group buy service. It is fast and works efficiently.",
+        "rating": 5
+      }
+    ]
+  },
+  "features": {
+    "items": [
+      {
+        "title": "Instant Access",
+        "description": "Get immediate access to all tools right after your purchase. No waiting time."
+      },
+      {
+        "title": "99.9% Uptime",
+        "description": "Our proprietary cloud infrastructure ensures your tools are always available when you need them."
+      },
+      {
+        "title": "24/7 Live Support",
+        "description": "Our dedicated support team is available around the clock to help you with any technical issues."
+      },
+      {
+        "title": "Secure Browsing",
+        "description": "We use advanced encryption and secure extensions to protect your data and privacy."
+      },
+      {
+        "title": "Global Access",
+        "description": "Access your tools from anywhere in the world with our high-speed global servers."
+      },
+      {
+        "title": "Regular Updates",
+        "description": "We constantly update our tool list and infrastructure to provide the best experience."
+      }
+    ]
+  },
+  "process": {
+    "heading": "How Our Group Buy System Works",
+    "description": "Create your account, choose a plan, then open the tools you need from one dashboard. It is simple even if you are new to SEO group buy tools.",
+    "steps": [
+      {
+        "title": "Create Account",
+        "description": "Sign up in seconds with Google or email. No complex verification required."
+      },
+      {
+        "title": "Choose Plan",
+        "description": "Select the toolkit that fits your needs. Instant activation upon payment."
+      },
+      {
+        "title": "Access Portal",
+        "description": "Log in to our secure web portal to see your unified tool dashboard."
+      },
+      {
+        "title": "Start Growing",
+        "description": "Launch any tool with one click and start dominating your niche."
+      }
+    ]
+  },
+  "logoCloud": {
+    "heading": "Popular Tools You Get Access To",
+    "logos": [
+      {
+        "name": "Ahrefs",
+        "domain": "ahrefs.com"
+      },
+      {
+        "name": "SEMrush",
+        "domain": "semrush.com"
+      },
+      {
+        "name": "Moz",
+        "domain": "moz.com"
+      },
+      {
+        "name": "Majestic",
+        "domain": "majestic.com"
+      },
+      {
+        "name": "SpyFu",
+        "domain": "spyfu.com"
+      },
+      {
+        "name": "Canva",
+        "domain": "canva.com"
+      },
+      {
+        "name": "Grammarly",
+        "domain": "grammarly.com"
+      },
+      {
+        "name": "Jasper",
+        "domain": "jasper.ai"
+      }
+    ]
+  }
+}
