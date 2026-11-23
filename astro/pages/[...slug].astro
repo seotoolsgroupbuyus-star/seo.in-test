@@ -7,10 +7,10 @@ import {getCompetitorMeta} from '../../src/data/competitorMeta';
 import {withBrandTitle} from '../../src/seo/site';
 export function getStaticPaths(){
  const defaults={
-  'all-tools':['SEO Group Buy | All Tools','Explore all available group buy SEO and AI tools.'],
-  'blog':['Blog | SEO Group Buy','Guides and articles about group buy SEO and AI tools from SEO Group Buy.'],
-  'pricing':['Pricing | SEO Group Buy','Compare group buy SEO tools pricing plans.'],
-  'faq':['FAQ | SEO Group Buy','Answers to common questions about group buy SEO tools.']
+  'all-tools':[getCompetitorMeta('all-tools')?.title??'All Tools | SEO Group Buy',getCompetitorMeta('all-tools')?.description??'Browse all group buy SEO, AI, writing, and design tools available on SEO Group Buy.'],
+  'blog':[getCompetitorMeta('blog')?.title??'Blog | SEO Group Buy',getCompetitorMeta('blog')?.description??'Guides and articles about group buy SEO and AI tools from SEO Group Buy.'],
+  'pricing':['Pricing Plans','Compare SEO Group Buy plans — Lite $10/mo, Growth Starter $15/mo, Ahrefs Power Bundle $25/mo, Writer Toolkit, and more. Affordable group buy SEO tool access.'],
+  'faq':['FAQ','Frequently asked questions about SEO Group Buy — how group buy access works, data privacy, refunds, uptime, and using tools for client projects.']
  };
 
  const routes=[...Object.entries(defaults).map(([path,[title,description]])=>({path,title:withBrandTitle(title),description})),
