@@ -10,12 +10,14 @@ permissions:
 jobs:
   compare:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: npm install --no-save --no-audit --no-fund playwright
+      - run: npx playwright install --with-deps chromium
       - run: node scripts/compare-live.mjs
       - if: always()
         uses: actions/upload-artifact@v4
