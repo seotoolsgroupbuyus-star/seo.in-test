@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import cms from '../../content/home-extras.json';
 import { motion } from "motion/react";
 import { CheckCircle2, AlertCircle, Activity, Server, Cpu, Database } from "lucide-react";
@@ -24,11 +25,11 @@ export function SystemStatus() {
           <div className="flex gap-4">
             <div className="glass-card p-4 rounded-2xl text-center min-w-[120px]">
               <p className="text-2xl font-bold font-display">{cms.status.averageUptime}</p>
-              <p className="text-xs text-zinc-500 uppercase">Avg Uptime</p>
+              <p className="text-xs text-zinc-500 uppercase">{labels.status.uptimeLabel}</p>
             </div>
             <div className="glass-card p-4 rounded-2xl text-center min-w-[120px]">
               <p className="text-2xl font-bold font-display">{cms.status.averageLatency}</p>
-              <p className="text-xs text-zinc-500 uppercase">Avg Latency</p>
+              <p className="text-xs text-zinc-500 uppercase">{labels.status.latencyLabel}</p>
             </div>
           </div>
         </div>
@@ -73,16 +74,16 @@ export function SystemStatus() {
 
               <div className="space-y-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-zinc-500">Response Time</span>
+                  <span className="text-zinc-500">{labels.status.responseLabel}</span>
                   <span className="font-mono text-blue-400">{tool.latency}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-zinc-500">Uptime (30d)</span>
+                  <span className="text-zinc-500">{labels.status.uptime30Label}</span>
                   <span className="font-mono text-zinc-300">{tool.uptime}</span>
                 </div>
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs uppercase tracking-widest text-zinc-600">
-                    <span>Server Load</span>
+                    <span>{labels.status.loadLabel}</span>
                     <span>{tool.load}%</span>
                   </div>
                   <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
