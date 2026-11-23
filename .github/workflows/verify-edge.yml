@@ -1,0 +1,27 @@
+name: Verify Cloudflare edge SEO and 404
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/verify-edge.mjs'
+      - '.github/workflows/verify-edge.yml'
+permissions:
+  contents: read
+jobs:
+  edge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify preview assets, sitemap and not-found status
+        run: node scripts/verify-edge.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: edge-seo-report
+          path: edge-report.json
+          if-no-files-found: ignore
