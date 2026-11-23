@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import cms from '../../content/home-extras.json';
 import {motion} from 'motion/react';
 import {Search, Plus, Zap} from 'lucide-react';
@@ -103,25 +104,25 @@ export function ToolGrid() {
 
         <div className="relative mt-20 overflow-hidden glass-card rounded-[3rem] p-12 text-center">
           <div className="blue-glow -top-20 -right-20 h-64 w-64 opacity-20" />
-          <h3 className="mb-4 text-2xl font-bold font-display md:text-3xl">Need a Specific Tool?</h3>
+          <h3 className="mb-4 text-2xl font-bold font-display md:text-3xl">{labels.tools.requestHeading}</h3>
           <p className="mx-auto mb-8 max-w-xl text-zinc-400">
             If your favorite tool is not listed, tell us. We review requests weekly and add the most needed SEO
             and marketing tools as soon as seats are available.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
-              to="/all-tools"
+              to={labels.tools.viewUrl}
               className="inline-flex h-14 items-center justify-center rounded-full border border-white/15 px-10 font-bold text-white transition-colors hover:bg-white/5"
             >
-              View all tools
+              {labels.tools.viewButton}
             </Link>
             <a
-              href="https://wa.me/447845432224"
+              href={labels.tools.requestUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-blue-600 px-10 font-bold text-white transition-colors hover:bg-blue-700"
             >
-              <Plus className="h-5 w-5" /> Request a New Tool
+              <Plus className="h-5 w-5" /> {labels.tools.requestButton}
             </a>
           </div>
         </div>
