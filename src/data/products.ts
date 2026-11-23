@@ -161,8 +161,22 @@ const originalProducts: Product[] = [
 
 export const products: Product[] = originalProducts.map((p) => {
   const updated = cmsProductMap[p.slug];
-  // Original computed titles/descriptions/short text remain exact unless explicitly edited.
-  return updated ? {...p, ...Object.fromEntries(Object.entries(updated).filter(([k,v]) => v !== '' && v !== null))} : p;
+  if (!updated) return p;
+  const changes = Object.fromEntries(Object.entries(updated).filter(([,v]) => v !== '' && v !== null));
+  const merged = {...p,...changes};
+  const priceChanged = merged.priceMonthly !== p.priceMonthly || merged.priceYearly !== p.priceYearly;
+  const nameChanged = merged.name !== p.name;
+  // Preserve live metadata unless the CMS explicitly changes its underlying values.
+  // Never leave stale dollar amounts in the title/description after a CMS price edit.
+  if ((priceChanged || nameChanged) && !updated.title)
+    merged.title = p.slug === 'screaming-frog-website-audit-tool'
+      ? p.title
+      : buildTitle(p.slug, merged.name, merged.priceMonthly);
+  if ((priceChanged || nameChanged) && !updated.description)
+    merged.description = buildDescription(merged.name, merged.priceMonthly, merged.priceYearly);
+  if ((priceChanged || nameChanged) && !updated.shortDesc)
+    merged.shortDesc = buildShortDesc(merged.name, merged.priceMonthly, merged.priceYearly);
+  return merged;
 });
 
 export const productsBySlug = Object.fromEntries(products.map((x) => [x.slug, x])) as Record<
