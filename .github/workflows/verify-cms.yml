@@ -23,7 +23,7 @@ jobs:
           node-version: '22'
       - name: Validate Pages CMS YAML and six collections
         run: |
-          ruby -e 'require "yaml"; y=YAML.load_file(".pages.yml", aliases: true); c=y.fetch("content"); abort "Expected seven CMS editors" unless c.size==7; puts "CMS YAML and all six editors valid"'
+          ruby -e 'require "yaml"; y=YAML.load_file(".pages.yml", aliases: true); c=y.fetch("content"); abort "Expected eight CMS editors" unless c.size==8; puts "CMS YAML and all eight editors valid"'
       - name: Check CMS source records and fields
         run: node scripts/verify-cms-editing.mjs validate
       - name: Simulate CMS content changes (CI only)
