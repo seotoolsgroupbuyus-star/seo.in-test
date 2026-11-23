@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import {Outlet} from 'react-router-dom';
 import {Navbar} from '../components/Navbar';
 import {Footer} from '../components/Footer';
@@ -11,7 +12,7 @@ export function SiteLayout() {
       <Navbar />
       <Outlet />
       <Footer />
-      <ChatWidget whatsappLink="https://wa.me/447845432224" />
+      <ChatWidget whatsappLink={labels.chat.whatsappUrl} facebookLink={labels.chat.facebookUrl} />
     </div>
   );
 }
