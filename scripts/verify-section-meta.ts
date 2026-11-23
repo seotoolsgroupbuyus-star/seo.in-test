@@ -6,7 +6,9 @@ import {sectionSeo, sectionMeta} from '../src/seo/sectionMeta';
 // Verify the actual server-generated HTML uses exactly the shared SEO
 // metadata React applies after hydration. No live website is modified.
 function decode(s:string) {
-  return s.replace(/&quot;/g,'"').replace(/&#(?:39|x27);/gi,"'")
+  return s.replace(/&#(\d+);/g,(_,num)=>String.fromCodePoint(Number(num)))
+    .replace(/&#x([0-9a-f]+);/gi,(_,num)=>String.fromCodePoint(parseInt(num,16)))
+    .replace(/&quot;/g,'"').replace(/&#(?:39|x27);/gi,"'")
     .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
 }
 for(const slug of Object.keys(sectionMeta) as (keyof typeof sectionMeta)[]) {
