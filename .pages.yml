@@ -119,7 +119,39 @@ content:
         type: string
       - { name: primaryUrl, label: Primary Button URL, type: string }
       - { name: secondaryUrl, label: Secondary Button URL, type: string }
+      - { name: seoTitle, label: Homepage SEO Title, type: string }
+      - { name: seoDescription, label: Homepage Meta Description, type: text }
 
+  - name: section_seo
+    label: All Tools, Blog, Pricing and FAQ SEO
+    type: file
+    path: content/section-seo.json
+    format: json
+    fields:
+      - name: all-tools
+        label: All Tools SEO
+        type: object
+        fields:
+          - { name: title, label: SEO Page Title, type: string }
+          - { name: description, label: Meta Description, type: text }
+      - name: blog
+        label: Blog SEO
+        type: object
+        fields:
+          - { name: title, label: SEO Page Title, type: string }
+          - { name: description, label: Meta Description, type: text }
+      - name: pricing
+        label: Pricing SEO
+        type: object
+        fields:
+          - { name: title, label: SEO Page Title, type: string }
+          - { name: description, label: Meta Description, type: text }
+      - name: faq
+        label: FAQ SEO
+        type: object
+        fields:
+          - { name: title, label: SEO Page Title, type: string }
+          - { name: description, label: Meta Description, type: text }
   - name: pricing_plans
     label: Pricing Plans
     type: file
