@@ -1,0 +1,82 @@
+{
+  "plans": [
+    {
+      "name": "Lite Essentials",
+      "price": "10",
+      "description": "Best for beginners who want cheap SEO tools group buy access to get started fast.",
+      "buyNowHref": "https://seogroupsbuy.com/users/cart/index/product/id/207/c/",
+      "features": [
+        "Keyword research essentials",
+        "Basic site audit checks",
+        "Simple design tools",
+        "Learning resources",
+        "Email support"
+      ]
+    },
+    {
+      "name": "Growth Starter",
+      "price": "15",
+      "description": "Most balanced SEO group buy plan for daily work on client sites and content.",
+      "buyNowHref": "https://seogroupsbuy.com/users/cart/index/product/id/4/c/",
+      "features": [
+        "Full SEO toolkit access",
+        "Keyword research + tracking",
+        "AI writing support",
+        "Design & graphics tools",
+        "Priority help"
+      ]
+    },
+    {
+      "name": "Ahrefs Power Bundle",
+      "price": "25",
+      "description": "For heavy research days when you need Ahrefs group buy style depth plus more.",
+      "buyNowHref": "https://seogroupsbuy.com/users/cart/index/product/id/13/c/",
+      "features": [
+        "Backlink research workflows",
+        "Competitor analysis",
+        "Advanced audits & reports",
+        "Content planning tools",
+        "Faster support response"
+      ]
+    },
+    {
+      "name": "Writer Toolkit",
+      "price": "15",
+      "description": "Made for writers who want SEO content tools, checks, and fast drafts in one place.",
+      "buyNowHref": "https://seogroupsbuy.com/users/cart/index/product/id/11/c/",
+      "features": [
+        "AI writing suite",
+        "Grammar and tone checks",
+        "Plagiarism style checks",
+        "Content research tools",
+        "Ready to publish templates"
+      ]
+    },
+    {
+      "name": "Designer Pack",
+      "price": "10",
+      "description": "For creatives who need quick designs, thumbnails, and social posts without extra cost.",
+      "buyNowHref": "https://seogroupsbuy.com/users/cart/index/product/id/12/c/",
+      "features": [
+        "Design software access",
+        "Premium templates",
+        "Stock images and icons",
+        "Video tools for reels",
+        "Brand kit basics"
+      ]
+    },
+    {
+      "name": "Mega All-Access",
+      "price": "50",
+      "description": "All access bundle for teams that need everything from SEO to e‑commerce research.",
+      "buyNowHref": "https://seogroupsbuy.com/users/cart/index/product/id/97/c/",
+      "features": [
+        "All premium tools unlocked",
+        "SEO + content + design stack",
+        "E‑commerce research suite",
+        "Learning platform access",
+        "Best support priority"
+      ]
+    }
+  ]
+}
