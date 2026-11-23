@@ -54,6 +54,8 @@ if(mode==='prepare'){
  about.title='CMS About Custom SEO Title';
  about.seoDescription='CMS About Custom Description';
  write(pageFile,about);
+ chrome.seo.socialImage='/media/cms-social-image.webp';
+ chrome.seo.favicon='/media/cms-favicon.png';
  chrome.header.brand='CMS Header Brand';
  chrome.header.links[2].label='CMS Tools Menu Link';
  chrome.footer.tagline='CMS Footer Tagline';
@@ -126,6 +128,8 @@ if(mode==='prepare'){
  assert.ok(product.includes('37/mo'), 'CMS product title price stale');
  assert.ok(product.includes('207/year'), 'CMS product SEO description stale');
  check('index.html','CMS Header Brand');
+ check('index.html','https://seogroupbuy.in/media/cms-social-image.webp');
+ check('index.html','/media/cms-favicon.png');
  check('index.html','CMS Tools Menu Link');
  check('index.html','CMS Footer Tagline');
  check('pricing/index.html','CMS Edited Lite Plan');
