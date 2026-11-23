@@ -26,6 +26,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build Astro static site
         run: npm run build
+      - name: Check 77 routes and 52 Product JSON-LD blocks
+        run: node scripts/verify-migration.mjs
       - name: Verify generated pages and assets
         run: |
           test -f dist/index.html
