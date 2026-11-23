@@ -2,7 +2,7 @@ import {getCompetitorMeta} from './competitorMeta';
 // Pages CMS edits the JSON files; original product definition remains fallback.
 const cmsProducts = import.meta.glob('../../content/products/*.json', { eager: true, import: 'default' }) as Record<string, Partial<Product>>;
 const cmsProductMap = Object.fromEntries(Object.values(cmsProducts).map((p) => [p.slug, p]));
-import {SHOP_SIGNUP_URL, shopCartUrl} from './shopLinks';
+import {SHOP_SIGNUP_URL, shopCartUrl, paymentLink} from './shopLinks';
 
 export type ProductCategory =
   | 'Premium SEO Tools'
@@ -162,7 +162,7 @@ const originalProducts: Product[] = [
 
 export const products: Product[] = originalProducts.map((p) => {
   const updated = cmsProductMap[p.slug];
-  if (!updated) return p;
+  if (!updated) return {...p,buyHref:paymentLink(p.buyHref)};
   const changes = Object.fromEntries(Object.entries(updated).filter(([,v]) => v !== '' && v !== null));
   const merged = {...p,...changes};
   const priceChanged = merged.priceMonthly !== p.priceMonthly || merged.priceYearly !== p.priceYearly;
@@ -177,7 +177,7 @@ export const products: Product[] = originalProducts.map((p) => {
     merged.description = buildDescription(merged.name, merged.priceMonthly, merged.priceYearly);
   if ((priceChanged || nameChanged) && !updated.shortDesc)
     merged.shortDesc = buildShortDesc(merged.name, merged.priceMonthly, merged.priceYearly);
-  return merged;
+  return {...merged,buyHref:paymentLink(merged.buyHref)};
 });
 
 export const productsBySlug = Object.fromEntries(products.map((x) => [x.slug, x])) as Record<
