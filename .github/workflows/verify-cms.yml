@@ -23,7 +23,7 @@ jobs:
           node-version: '22'
       - name: Validate Pages CMS YAML and six collections
         run: |
-          ruby -e 'require "yaml"; y=YAML.load_file(".pages.yml", aliases: true); c=y.fetch("content"); abort "Expected nine CMS editors" unless c.size==9; puts "CMS YAML and all nine editors valid"'
+          ruby -e 'require "yaml"; y=YAML.load_file(".pages.yml", aliases: true); c=y.fetch("content"); abort "Expected nine CMS editors" unless c.size==9; abort "CMS merge protection disabled" unless y.dig("settings","content","merge") == true; puts "CMS YAML and all nine editors valid"'
       - name: Check CMS source records and fields
         run: node scripts/verify-cms-editing.mjs validate
       - name: Simulate CMS content changes (CI only)
