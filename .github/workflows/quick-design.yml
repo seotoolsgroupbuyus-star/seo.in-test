@@ -1,0 +1,29 @@
+name: Verify live versus Astro computed design
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/quick-design.mjs'
+      - '.github/workflows/quick-design.yml'
+permissions:
+  contents: read
+jobs:
+  design:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --no-audit --no-fund playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Compare computed styles and widths in two viewports
+        run: node scripts/quick-design.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: computed-design-parity
+          path: design-report.json
+          if-no-files-found: ignore
