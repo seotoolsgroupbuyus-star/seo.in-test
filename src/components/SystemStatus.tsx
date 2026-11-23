@@ -1,14 +1,8 @@
+import cms from '../../content/home-extras.json';
 import { motion } from "motion/react";
 import { CheckCircle2, AlertCircle, Activity, Server, Cpu, Database } from "lucide-react";
 
-const toolsStatus = [
-  { name: "Ahrefs", status: "Operational", latency: "120ms", uptime: "99.98%", load: 45 },
-  { name: "SEMrush", status: "Operational", latency: "145ms", uptime: "99.95%", load: 62 },
-  { name: "Moz Pro", status: "Operational", latency: "98ms", uptime: "99.99%", load: 28 },
-  { name: "SpyFu", status: "Operational", latency: "110ms", uptime: "99.97%", load: 35 },
-  { name: "Majestic", status: "Operational", latency: "160ms", uptime: "99.92%", load: 55 },
-  { name: "Canva Pro", status: "Operational", latency: "45ms", uptime: "99.99%", load: 12 },
-];
+const toolsStatus=cms.status.tools;
 
 export function SystemStatus() {
   return (
@@ -18,29 +12,29 @@ export function SystemStatus() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 text-xs font-bold uppercase tracking-widest mb-6">
               <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-              All Systems Operational
+              {cms.status.badge}
             </div>
             <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">
-              Reliable Access That Keeps You Working
+              {cms.status.heading}
             </h2>
             <p className="text-xl text-zinc-400">
-              We keep a close eye on tool access day and night. When a seat gets slow or a login stops working, we rotate sessions fast so your SEO audits and keyword research do not get stuck.
+              {cms.status.description}
             </p>
           </div>
           <div className="flex gap-4">
             <div className="glass-card p-4 rounded-2xl text-center min-w-[120px]">
-              <p className="text-2xl font-bold font-display">99.99%</p>
+              <p className="text-2xl font-bold font-display">{cms.status.averageUptime}</p>
               <p className="text-xs text-zinc-500 uppercase">Avg Uptime</p>
             </div>
             <div className="glass-card p-4 rounded-2xl text-center min-w-[120px]">
-              <p className="text-2xl font-bold font-display">112ms</p>
+              <p className="text-2xl font-bold font-display">{cms.status.averageLatency}</p>
               <p className="text-xs text-zinc-500 uppercase">Avg Latency</p>
             </div>
           </div>
         </div>
 
         <h3 className="text-2xl font-bold font-display mb-8">
-          Supported Tools
+          {cms.status.supportedHeading}
         </h3>
 
         <ul className="mb-10 flex flex-wrap gap-3">
