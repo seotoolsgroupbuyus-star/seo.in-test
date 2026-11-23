@@ -10,6 +10,10 @@ const pages=files('content/pages').map(f=>read('content/pages/'+f));
 const home=read('content/homepage.json');
 const pricing=read('content/plans.json');
 const faq=read('content/faqs.json');
+const chrome=read('content/site.json');
+assert.equal(chrome.header.links.length,6,'Global menu missing');
+assert.equal(chrome.footer.quickLinks.length,7,'Footer links missing');
+assert.equal(chrome.footer.legalLinks.length,4,'Legal links missing');
 assert.equal(pricing.plans.length,6,'CMS pricing plans missing');
 assert.equal(faq.faqs.length,5,'CMS FAQ items missing');
 for(const p of pricing.plans){assert.ok(p.name&&p.price&&p.buyNowHref&&p.features.length===5)}
@@ -39,6 +43,10 @@ if(mode==='prepare'){
  about.title='CMS About Custom SEO Title';
  about.seoDescription='CMS About Custom Description';
  write(pageFile,about);
+ chrome.header.brand='CMS Header Brand';
+ chrome.header.links[2].label='CMS Tools Menu Link';
+ chrome.footer.tagline='CMS Footer Tagline';
+ write('content/site.json',chrome);
  pricing.plans[0].price='99';
  pricing.plans[0].name='CMS Edited Lite Plan';
  write('content/plans.json',pricing);
@@ -56,6 +64,9 @@ if(mode==='prepare'){
  assert.ok(product.includes('$37'), 'CMS product price change not visible');
  assert.ok(product.includes('37/mo'), 'CMS product title price stale');
  assert.ok(product.includes('207/year'), 'CMS product SEO description stale');
+ check('index.html','CMS Header Brand');
+ check('index.html','CMS Tools Menu Link');
+ check('index.html','CMS Footer Tagline');
  check('pricing/index.html','CMS Edited Lite Plan');
  check('pricing/index.html','99'); // Astro SSR may insert a hydration boundary between $ and number
  check('faq/index.html','CMS Edited FAQ Answer');
