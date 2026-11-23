@@ -250,3 +250,90 @@ content:
             fields:
               - { name: name, label: Tool Name, type: string }
               - { name: domain, label: Logo Source Domain, type: string }
+
+  - name: home_extras
+    label: Homepage - Comparisons, Benefits, Access and Status
+    type: file
+    path: content/home-extras.json
+    format: json
+    fields:
+      - name: whyChoose
+        label: Why Choose Us
+        type: object
+        fields:
+          - { name: heading, label: Section Heading, type: string }
+          - name: items
+            label: Cards
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{title}" } }
+            fields:
+              - { name: title, label: Card Heading, type: string }
+              - { name: description, label: Description, type: text }
+      - name: priceComparison
+        label: Price Comparison
+        type: object
+        fields:
+          - { name: heading, label: Section Heading, type: string }
+          - { name: description, label: Intro Description, type: text }
+          - name: cards
+            label: Comparison Benefits
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{heading}" } }
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: description, label: Description, type: text }
+          - name: tools
+            label: Compared Tools
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{name}" } }
+            fields:
+              - { name: name, label: Tool Name, type: string }
+              - { name: original, label: Individual Price, type: number }
+              - { name: our, label: Group Buy Value, type: string }
+      - name: access
+        label: Access Showcase
+        type: object
+        fields:
+          - { name: badge, label: Badge, type: string }
+          - { name: heading, label: Heading, type: string }
+          - { name: description, label: Description, type: text }
+          - name: items
+            label: Cards
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{title}" } }
+            fields:
+              - { name: title, label: Card Heading, type: string }
+              - { name: description, label: Description, type: text }
+      - name: status
+        label: System Status
+        type: object
+        fields:
+          - { name: badge, label: Status Badge, type: string }
+          - { name: heading, label: Heading, type: string }
+          - { name: description, label: Description, type: text }
+          - { name: averageUptime, label: Average Uptime, type: string }
+          - { name: averageLatency, label: Average Latency, type: string }
+          - { name: supportedHeading, label: Tools Heading, type: string }
+          - name: tools
+            label: Tool Status Rows
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{name}" } }
+            fields:
+              - { name: name, label: Tool, type: string }
+              - { name: status, label: Status, type: string }
+              - { name: latency, label: Latency, type: string }
+              - { name: uptime, label: Uptime, type: string }
+              - { name: load, label: Load %, type: number }
+      - name: toolGrid
+        label: Tool Collection
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: description, label: Description, type: text }
+          - { name: searchPlaceholder, label: Search Placeholder, type: string }
+      - name: faqIntro
+        label: FAQ Introduction
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: description, label: Description, type: text }
