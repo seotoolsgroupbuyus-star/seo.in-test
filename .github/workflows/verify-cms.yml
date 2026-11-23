@@ -21,6 +21,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Validate Pages CMS YAML and six collections
+        run: |
+          ruby -e 'require "yaml"; y=YAML.load_file(".pages.yml", aliases: true); c=y.fetch("content"); abort "Expected six CMS editors" unless c.size==6; puts "CMS YAML and all six editors valid"'
       - name: Check CMS source records and fields
         run: node scripts/verify-cms-editing.mjs validate
       - name: Simulate CMS content changes (CI only)
