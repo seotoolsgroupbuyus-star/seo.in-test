@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import cms from '../../content/home-extras.json';
 import { motion } from "motion/react";
 import { MousePointer2, Zap, ShieldCheck, Globe, Download } from "lucide-react";
@@ -45,12 +46,12 @@ export function AccessShowcase() {
             </div>
 
             <a
-              href={SHOP_SIGNUP_URL}
+              href={labels.access.ctaUrl || SHOP_SIGNUP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-blue-600 px-8 font-bold text-white transition-colors hover:bg-blue-700"
             >
-              <Download className="h-5 w-5" /> Get Instant Access
+              <Download className="h-5 w-5" /> {labels.access.cta}
             </a>
           </motion.div>
 
@@ -65,7 +66,7 @@ export function AccessShowcase() {
               <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
                 <div className="flex items-center gap-3">
                   <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white">S</div>
-                  <span className="font-bold text-sm">SEO Hub Extension</span>
+                  <span className="font-bold text-sm">{labels.access.extensionTitle}</span>
                 </div>
                 <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
               </div>
@@ -89,7 +90,7 @@ export function AccessShowcase() {
                       <span className="font-bold text-sm">{tool.name}</span>
                     </div>
                     <span className="inline-flex h-8 items-center rounded-lg bg-blue-600 px-4 text-[10px] font-bold text-white">
-                      ONE-CLICK LOGIN
+                      {labels.access.extensionBadge}
                     </span>
                   </div>
                 ))}
