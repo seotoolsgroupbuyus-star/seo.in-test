@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import cmsProductDetails from '../../content/product-details.json';
 import {Button} from '@/components/ui/button';
 import {ArrowRight} from 'lucide-react';
@@ -103,23 +104,23 @@ export function ProductPage({product}: Props) {
         <SectionRule />
 
         <section>
-          <h2 className="text-2xl font-bold font-display md:text-3xl">Pricing &amp; Features</h2>
+          <h2 className="text-2xl font-bold font-display md:text-3xl">{labels.product.pricingHeading}</h2>
           <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
             <table className="w-full text-left text-sm">
               <thead className="bg-white/5 text-xs font-bold uppercase tracking-widest text-zinc-400">
                 <tr>
-                  <th className="px-5 py-4">Plan</th>
-                  <th className="px-5 py-4">Price</th>
+                  <th className="px-5 py-4">{labels.product.planColumn}</th>
+                  <th className="px-5 py-4">{labels.product.priceColumn}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/10">
                 <tr className="text-zinc-300">
-                  <td className="px-5 py-4 font-semibold text-white">Monthly</td>
-                  <td className="px-5 py-4 text-zinc-400">${formatUsd(product.priceMonthly)} per month</td>
+                  <td className="px-5 py-4 font-semibold text-white">{labels.product.monthly}</td>
+                  <td className="px-5 py-4 text-zinc-400">${formatUsd(product.priceMonthly)} {labels.product.monthSuffix}</td>
                 </tr>
                 <tr className="text-zinc-300">
-                  <td className="px-5 py-4 font-semibold text-white">Yearly</td>
-                  <td className="px-5 py-4 text-zinc-400">${formatUsd(product.priceYearly)} per year</td>
+                  <td className="px-5 py-4 font-semibold text-white">{labels.product.yearly}</td>
+                  <td className="px-5 py-4 text-zinc-400">${formatUsd(product.priceYearly)} {labels.product.yearSuffix}</td>
                 </tr>
               </tbody>
             </table>
@@ -129,8 +130,8 @@ export function ProductPage({product}: Props) {
             <table className="w-full text-left text-sm">
               <thead className="bg-white/5 text-xs font-bold uppercase tracking-widest text-zinc-400">
                 <tr>
-                  <th className="px-5 py-4">Benefit</th>
-                  <th className="px-5 py-4">How It Helps</th>
+                  <th className="px-5 py-4">{labels.product.benefitColumn}</th>
+                  <th className="px-5 py-4">{labels.product.helpsColumn}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/10">
@@ -154,15 +155,15 @@ export function ProductPage({product}: Props) {
             viewport={{once: true}}
             className="text-2xl font-bold font-display md:text-3xl"
           >
-            What Is {product.name}?
+            {labels.product.whatIsPrefix} {product.name}?
           </motion.h2>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <article className="rounded-2xl border border-white/10 bg-zinc-950/80 p-6">
-              <h3 className="text-lg font-bold font-display text-white">Overview</h3>
+              <h3 className="text-lg font-bold font-display text-white">{labels.product.overview}</h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">{product.description}</p>
             </article>
             <article className="rounded-2xl border border-white/10 bg-zinc-950/80 p-6">
-              <h3 className="text-lg font-bold font-display text-white">Why Teams Use It</h3>
+              <h3 className="text-lg font-bold font-display text-white">{labels.product.whyTeams}</h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">
                 {detail?.teamDescription}
               </p>
@@ -173,7 +174,7 @@ export function ProductPage({product}: Props) {
         <SectionRule />
 
         <section>
-          <h2 className="text-2xl font-bold font-display md:text-3xl">Key Benefits of {product.name}</h2>
+          <h2 className="text-2xl font-bold font-display md:text-3xl">{labels.product.keyBenefitsPrefix} {product.name}</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {(detail?.keyBenefits||[]).map(({title, body}) => (
               <article key={title} className="rounded-2xl border border-white/10 bg-zinc-950/80 p-6">
