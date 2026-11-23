@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import { useEffect, useMemo, useState } from "react";
 import { MessageCircle, X, Phone, Facebook } from "lucide-react";
 
@@ -24,16 +25,16 @@ export function ChatWidget({
     () => [
       {
         id: "whatsapp",
-        label: "WhatsApp",
-        description: "Chat with support",
+        label: labels.chat.whatsappLabel,
+        description: labels.chat.whatsappDescription,
         href: whatsappLink,
         Icon: Phone,
         accent: "text-green-400",
       },
       {
         id: "facebook",
-        label: "Facebook",
-        description: "Message our page",
+        label: labels.chat.facebookLabel,
+        description: labels.chat.facebookDescription,
         href: facebookLink,
         Icon: Facebook,
         accent: "text-blue-400",
@@ -48,8 +49,8 @@ export function ChatWidget({
         <div className="mb-3 w-[320px] overflow-hidden rounded-2xl border border-white/10 bg-black/85 backdrop-blur-xl shadow-2xl">
           <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
             <div className="leading-tight">
-              <div className="text-sm font-bold text-white">Chat with us</div>
-              <div className="text-[11px] text-zinc-400">Avg reply: a few minutes</div>
+              <div className="text-sm font-bold text-white">{labels.chat.heading}</div>
+              <div className="text-[11px] text-zinc-400">{labels.chat.replyTime}</div>
             </div>
             <button
               type="button"
@@ -83,7 +84,7 @@ export function ChatWidget({
                     <div className="flex-1">
                       <div className="text-sm font-bold text-white">{label}</div>
                       <div className="text-xs text-zinc-400">
-                        {enabled ? description : "Link not set yet"}
+                        {enabled ? description : labels.chat.notConfigured}
                       </div>
                     </div>
                     <div className="h-8 w-8 rounded-xl bg-white/5 border border-white/10 grid place-items-center text-zinc-400 group-hover:text-white transition-colors">
@@ -94,7 +95,7 @@ export function ChatWidget({
               })}
             </div>
             <div className="mt-3 text-[11px] text-zinc-500 px-1">
-              Tip: Press <span className="text-zinc-300 font-semibold">Esc</span> to close.
+              {labels.chat.tip} <span className="text-zinc-300 font-semibold">Esc</span> {labels.chat.tipSuffix}
             </div>
           </div>
         </div>
@@ -110,8 +111,8 @@ export function ChatWidget({
           <MessageCircle className="h-5 w-5" />
         </div>
         <div className="text-left leading-tight">
-          <div className="text-sm font-bold">{open ? "Close" : "Chat"}</div>
-          <div className="text-[11px] text-white/80">WhatsApp / Facebook</div>
+          <div className="text-sm font-bold">{open ? labels.chat.closeText : labels.chat.openText}</div>
+          <div className="text-[11px] text-white/80">{labels.chat.channels}</div>
         </div>
       </button>
     </div>
