@@ -24,7 +24,7 @@ for(const p of products) {
 const site='https://seogroupbuy.in';
 const dist=path.join(root,'dist');
 assert(fs.existsSync(dist),'Astro dist/ missing: run npm run build first');
-let checked=0;
+let checked=0,productSchemas=0;
 for(const route of routes){
   const rel=route==='/'?'index.html':path.posix.join(route.slice(1),'index.html');
   const filename=path.join(dist,rel);
@@ -36,9 +36,20 @@ for(const route of routes){
   assert(/<meta\s+name="description"/i.test(html),`Missing meta description: ${route}`);
   assert(/name="robots"\s+content="noindex,nofollow"/.test(html) || /name="robots"\s+content="index,follow"/.test(html),`Missing explicit robots on ${route}`);
   assert(/<h1\b/i.test(html),`No server-rendered H1: ${route}. React SSR may be broken.`);
+  const jsonlds=[...html.matchAll(/<script[^>]*type="application\\/ld\\+json"[^>]*>([\\s\\S]*?)<\\/script>/gi)].map(m=>JSON.parse(m[1]));
+  if(route.startsWith('/tool/')||route==='/screaming-frog-website-audit-tool'){
+    const product=products.find(p=>(p.slug==='screaming-frog-website-audit-tool'?'/'+p.slug:'/tool/'+p.slug)===route);
+    const productLd=jsonlds.find(j=>j['@type']==='Product');
+    assert(productLd,'Missing Product JSON-LD: '+route);
+    assert.equal(productLd.name,product.name,'Incorrect schema name '+route);
+    assert.equal(Number(productLd.offers?.price),product.priceMonthly,'Incorrect schema monthly price '+route);
+    assert.equal(productLd.url,expected,'Incorrect schema URL '+route);
+    productSchemas++;
+  }
   checked++;
 }
 for(const asset of ['favicon.svg','sitemap.xml','robots.txt']){
  assert(fs.existsSync(path.join(dist,asset)),`Asset missing in build: ${asset}`);
 }
-console.log(JSON.stringify({ok:true,checked,products:products.length,pages:pages.length,sourceSitemap:sitemap.length,canonicalOrigin:site},null,2));
+assert.equal(productSchemas,52,'Not all 52 products have valid Product JSON-LD');
+console.log(JSON.stringify({ok:true,checked,productSchemas,products:products.length,pages:pages.length,sourceSitemap:sitemap.length,canonicalOrigin:site},null,2));
