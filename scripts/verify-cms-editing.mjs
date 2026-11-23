@@ -97,7 +97,9 @@ if(mode==='prepare'){
  check('index.html','CMS Editable Step');
  check('index.html','CMS Editable Tool Logos');
  check('index.html','CMS Portal Preview Title');
- check('index.html','CMS Edited Chat Heading');
+ // The collapsed chat panel is hydrated only in the client bundle, not SSR HTML.
+ const chatJs=fs.readdirSync('dist/_astro').filter(n=>n.endsWith('.js')).map(n=>fs.readFileSync('dist/_astro/'+n,'utf8')).join('');
+ assert.ok(chatJs.includes('CMS Edited Chat Heading'),'Edited chat text missing in hydrated JS bundle');
  check('index.html','CMS Preview Tool');
  check('index.html','CMS Pricing Heading');
  check('all-tools/index.html','CMS All Tools Heading');
