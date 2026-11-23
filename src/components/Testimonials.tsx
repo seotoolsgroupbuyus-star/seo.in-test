@@ -1,38 +1,8 @@
+import homeSections from '../../content/home-sections.json';
 import { motion } from "motion/react";
 import { Star, Quote } from "lucide-react";
 
-const testimonials = [
-  {
-    name: "Sarah Jenkins",
-    role: "SEO Director at GrowthFlow",
-    content: "Recently we started using seogroupbuy.in and it has improved our marketing work a lot.",
-    rating: 5
-  },
-  {
-    name: "Michael Chen",
-    role: "Independent Consultant",
-    content: "After joining seogroupbuy.in our agency tool cost reduced almost 90 percent. Now we use SEMrush Ahrefs and many other tools in one place.",
-    rating: 5
-  },
-  {
-    name: "Elena Rodriguez",
-    role: "Head of Content at TechPulse",
-    content: "This is my honest review. I searched many group buy sites but none were cooperative. seogroupbuy.in support was genuine and helpful.",
-    rating: 5
-  },
-  {
-    name: "Ali Raza",
-    role: "Freelance SEO",
-    content: "I am very satisfied with seogroupbuy.in. I have been using their services for a long time and the experience is consistently good.",
-    rating: 5
-  },
-  {
-    name: "Ayesha Khan",
-    role: "Agency Ops",
-    content: "I subscribed to their Semrush group buy service. It is fast and works efficiently.",
-    rating: 5
-  },
-];
+const testimonials = homeSections.testimonials.items;
 
 export function Testimonials() {
   return (
@@ -42,15 +12,15 @@ export function Testimonials() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">
-            Why Customers Trust Us
+            {homeSections.testimonials.heading}
           </h2>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            Real marketers use our SEO tools group buy to research keywords, check backlinks, and deliver client reports on time. Here is what they say after switching from expensive subscriptions.
+            {homeSections.testimonials.description}
           </p>
         </div>
 
         <h3 className="text-2xl font-bold font-display mb-8 text-center">
-          Real User Feedback
+          {homeSections.testimonials.subheading}
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
