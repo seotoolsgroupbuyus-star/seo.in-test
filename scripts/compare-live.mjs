@@ -1,17 +1,62 @@
+// Strict text, SEO and link parity. Preview may intentionally be noindex.
 import {writeFileSync} from 'node:fs';
-const ORIGIN='https://seogroupbuy.in', PREVIEW='https://seo-in-test.bilalfadi11221333.workers.dev';
-const headers={'user-agent':'Mozilla/5.0 (compatible; SiteParityAudit/1.0)','cache-control':'no-cache'};
-async function get(url){const c=new AbortController(),t=setTimeout(()=>c.abort(),25000);try{const r=await fetch(url,{headers,redirect:'follow',signal:c.signal});return {status:r.status,url:r.url,html:await r.text()}}finally{clearTimeout(t)}}
-function meta(h,n){const tags=h.match(/<meta\\b[^>]*>/gi)||[];for(const tag of tags){const name=(tag.match(/name=["']([^"']+)["']/i)||[])[1]||'';if(name.toLowerCase()===n.toLowerCase())return (tag.match(/content=["']([^"']*)["']/i)||[])[1]||''}return ''}
-function title(h){return (h.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[])[1]?.replace(/&amp;/g,'&').trim()||''}
-function h1(h){return [...h.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/gi)].map(x=>x[1].replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim()).join(' | ')}
-function links(h){return [...new Set([...h.matchAll(/<a\b[^>]*href=["']([^"'#]+)["']/gi)].map(x=>x[1].trim()).filter(x=>!x.startsWith('javascript:')&&!x.startsWith('mailto:')&&!x.startsWith('tel:')))].sort()}
-function text(h){return h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/gi,' ').replace(/<[^>]+>/g,' ').replace(/&nbsp;|&#160;/g,' ').replace(/&amp;/g,'&').replace(/&#39;|&apos;/g,"'").replace(/\s+/g,' ').trim()}
-const sm=await get(ORIGIN+'/sitemap.xml');if(sm.status!==200)throw new Error('Original sitemap inaccessible: '+sm.status+' '+sm.html.slice(0,250));
-const paths=[...sm.html.matchAll(/<loc>(.*?)<\/loc>/g)].map(x=>new URL(x[1].replaceAll('&amp;','&')).pathname);
+const ORIGIN='https://seogroupbuy.in';
+const PREVIEW='https://seo-in-test.bilalfadi11221333.workers.dev';
+const timeout=30000;
+async function get(url){
+ const c=new AbortController(),t=setTimeout(()=>c.abort(),timeout);
+ try{const r=await fetch(url,{headers:{'user-agent':'Mozilla/5.0 SiteMigrationAudit/2.0','cache-control':'no-cache'},redirect:'follow',signal:c.signal});return {status:r.status,url:r.url,html:await r.text()}}finally{clearTimeout(t)}
+}
+const unescape=s=>String(s||'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;|&apos;/g,"'").replace(/&nbsp;|&#160;/g,' ');
+const clean=s=>unescape(String(s||'').replace(/<[^>]*>/g,' ')).replace(/\s+/g,' ').trim();
+function tags(html,tag){return [...html.matchAll(new RegExp('<'+tag+'\\b[^>]*>','gi'))].map(x=>x[0])}
+function attr(tag,key){const m=tag.match(new RegExp('(?:^|\\s)'+key+'\\s*=\\s*(?:"([^"]*)"|\\x27([^\\x27]*)\\x27)','i'));return m?.[1]??m?.[2]??''}
+function meta(h,key,prop='name'){for(const t of tags(h,'meta'))if(attr(t,prop).toLowerCase()===key.toLowerCase())return unescape(attr(t,'content'));return ''}
+function canonical(h){return tags(h,'link').find(t=>attr(t,'rel').toLowerCase()==='canonical')?attr(tags(h,'link').find(t=>attr(t,'rel').toLowerCase()==='canonical'),'href'):''}
+function normUrl(value,base){
+ try{const u=new URL(unescape(value),base);return u.hostname===new URL(base).hostname?u.pathname.replace(/\/+$/,'')+u.search+u.hash:u.origin+u.pathname+u.search+u.hash}catch{return value}
+}
+function links(h,base){return [...new Set(tags(h,'a').map(t=>attr(t,'href')).filter(Boolean).filter(x=>!x.startsWith('#')&&!/^(mailto:|tel:|javascript:)/i.test(x)).map(x=>normUrl(x,base)))].sort()}
+function visible(h){return clean(h.replace(/<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<svg\b[\s\S]*?<\/svg>/gi,' '))}
+function data(r,base){
+ const h=r.html;
+ const title=clean(h.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1]);
+ const headings=[...h.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map(x=>clean(x[1]));
+ const t=visible(h);
+ const images=tags(h,'img').map(x=>({src:normUrl(attr(x,'src'),base),alt:unescape(attr(x,'alt'))}));
+ const jsonld=[...h.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map(x=>{try{return JSON.parse(x[1])}catch{return {invalid:true}}});
+ return {status:r.status,title,description:meta(h,'description'),canonical:canonical(h),h1:headings,text:t,links:links(h,base),images,jsonld,robots:meta(h,'robots')};
+}
+const sitemap=await get(ORIGIN+'/sitemap.xml');
+if(sitemap.status!==200)throw Error('Original sitemap HTTP '+sitemap.status);
+const paths=[...new Set([...sitemap.html.matchAll(/<loc>\s*([^<]+)\s*<\/loc>/gi)].map(m=>new URL(unescape(m[1])).pathname))];
+if(paths.length!==77)throw Error('Expected 77 original sitemap routes, got '+paths.length);
 const results=[];
-for(let i=0;i<paths.length;i+=5){const batch=await Promise.all(paths.slice(i,i+5).map(async p=>{try{const [a,b]=await Promise.all([get(ORIGIN+p),get(PREVIEW+p)]);const at=text(a.html),bt=text(b.html);const al=links(a.html),bl=links(b.html);const atitle=title(a.html),btitle=title(b.html);return {path:p,originStatus:a.status,previewStatus:b.status,title:{origin:atitle,preview:btitle,match:atitle===btitle},description:{origin:meta(a.html,'description'),preview:meta(b.html,'description'),match:meta(a.html,'description')===meta(b.html,'description')},h1:{origin:h1(a.html),preview:h1(b.html),match:h1(a.html)===h1(b.html)},canonical:{origin:(a.html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)/i)||[])[1]||'',preview:(b.html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)/i)||[])[1]||''},textChars:{origin:at.length,preview:bt.length,ratio:at.length?Math.round(Math.min(at.length,bt.length)/Math.max(at.length,bt.length)*100):0},links:{origin:al.length,preview:bl.length,missing:al.filter(x=>!bl.includes(x)).slice(0,20),extra:bl.filter(x=>!al.includes(x)).slice(0,20)},images:{origin:(a.html.match(/<img\b/gi)||[]).length,preview:(b.html.match(/<img\b/gi)||[]).length},originSample:at.slice(0,180),previewSample:bt.slice(0,180)}}catch(e){return {path:p,error:String(e.message||e)}}}));results.push(...batch)}
-const report={date:new Date().toISOString(),origin:ORIGIN,preview:PREVIEW,sitemapCount:paths.length,results};writeFileSync('parity-report.json',JSON.stringify(report,null,2));
-const bad=results.filter(x=>x.error||x.originStatus!==200||x.previewStatus!==200||!x.title?.match||!x.h1?.match||!x.description?.match);
-console.log(JSON.stringify({sitemapCount:paths.length,checked:results.length,exactTitle:results.filter(x=>x.title?.match).length,exactH1:results.filter(x=>x.h1?.match).length,exactDescription:results.filter(x=>x.description?.match).length,failed:bad.length,firstFailures:bad.slice(0,15),textRatios:results.map(x=>({path:x.path,ratio:x.textChars?.ratio})).slice(0,25)}));
-if(bad.length)process.exitCode=1;
+for(let i=0;i<paths.length;i+=6){
+ const chunk=await Promise.all(paths.slice(i,i+6).map(async route=>{
+  try{
+   const [l,p]=await Promise.all([get(ORIGIN+route),get(PREVIEW+route)]);
+   const a=data(l,ORIGIN),b=data(p,PREVIEW);
+   const problems=[];
+   if(a.status!==200||b.status!==200)problems.push('http_status');
+   for(const key of ['title','description','canonical','h1']){
+    const left=JSON.stringify(a[key]),right=JSON.stringify(b[key]);
+    if(left!==right)problems.push(key);
+   }
+   const ratio=Math.max(a.text.length,b.text.length)?Math.min(a.text.length,b.text.length)/Math.max(a.text.length,b.text.length):1;
+   if(ratio<0.98)problems.push('text_ratio');
+   const missing=a.links.filter(x=>!b.links.includes(x)),extra=b.links.filter(x=>!a.links.includes(x));
+   if(missing.length||extra.length)problems.push('links');
+   if(a.images.length!==b.images.length)problems.push('image_count');
+   if(b.images.some(x=>!x.alt))problems.push('missing_image_alt');
+   if(b.jsonld.some(x=>x.invalid))problems.push('invalid_jsonld');
+   return {route,issues:problems,meta:{title:a.title,description:a.description,canonical:a.canonical},textRatio:Math.round(ratio*1000)/10,linkDelta:{missing:missing.slice(0,6),extra:extra.slice(0,6)},images:{live:a.images.length,preview:b.images.length},schemaCount:{live:a.jsonld.length,preview:b.jsonld.length},robots:{live:a.robots,preview:b.robots}};
+  }catch(e){return {route,issues:['request_error'],error:String(e)}}
+ }));
+ results.push(...chunk);
+}
+const summary={origin:ORIGIN,preview:PREVIEW,checked:results.length,passed:results.filter(x=>!x.issues.length).length,failed:results.filter(x=>x.issues.length).length,issueCounts:{}};
+for(const row of results)for(const issue of row.issues)summary.issueCounts[issue]=(summary.issueCounts[issue]||0)+1;
+writeFileSync('parity-report.json',JSON.stringify({summary,results},null,2));
+console.log(JSON.stringify({summary,failures:results.filter(x=>x.issues.length).slice(0,12)},null,2));
+if(summary.failed)process.exitCode=1;
