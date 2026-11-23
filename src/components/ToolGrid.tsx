@@ -1,3 +1,4 @@
+import cms from '../../content/home-extras.json';
 import {motion} from 'motion/react';
 import {Search, Plus, Zap} from 'lucide-react';
 import {useMemo, useState} from 'react';
@@ -26,12 +27,10 @@ export function ToolGrid() {
         <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
           <div className="max-w-2xl">
             <h2 className="mb-6 text-4xl font-bold font-display md:text-6xl">
-              Complete Group Buy SEO Tools Collection
+              {cms.toolGrid.heading}
             </h2>
             <p className="text-xl text-zinc-400">
-              Pick the tools you actually use for SEO. Keyword research, backlinks, audits, writing, and design
-              all in one place. This SEO tools group buy helps freelancers and agencies keep costs low and
-              productivity high.
+              {cms.toolGrid.description}
             </p>
           </div>
           <div className="relative w-full group md:w-80">
@@ -40,7 +39,7 @@ export function ToolGrid() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for a tool..."
+              placeholder={cms.toolGrid.searchPlaceholder}
               className="h-12 w-full rounded-2xl border border-white/10 bg-white/5 pl-12 pr-4 text-sm transition-all focus:border-blue-500 focus:outline-none"
             />
           </div>
