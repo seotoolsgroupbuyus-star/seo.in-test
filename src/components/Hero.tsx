@@ -80,14 +80,7 @@ export function Hero() {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {[
-                    { name: "Ahrefs", domain: "ahrefs.com" },
-                    { name: "SEMrush", domain: "semrush.com" },
-                    { name: "Canva", domain: "canva.com" },
-                    { name: "Grammarly", domain: "grammarly.com" },
-                    { name: "Jasper", domain: "jasper.ai" },
-                    { name: "Moz", domain: "moz.com" },
-                  ].map((tool, i) => (
+                  {labels.hero.tools.map((tool, i) => (
                     <div key={i} className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col items-center text-center group hover:bg-white/10 transition-colors">
                       <div className="h-12 w-12 rounded-xl bg-white flex items-center justify-center p-2 mb-3 shadow-lg">
                         <img
