@@ -152,6 +152,7 @@ content:
         type: object
         fields:
           - { name: brand, label: Website Brand Name, type: string }
+          - { name: logoUrl, label: Optional Brand Logo (upload), type: image }
           - { name: loginText, label: Login Button Text, type: string }
           - { name: loginUrl, label: Login Button URL, type: string }
           - { name: signupText, label: Signup Button Text, type: string }
