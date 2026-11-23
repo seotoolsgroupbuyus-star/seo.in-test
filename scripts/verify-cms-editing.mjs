@@ -59,6 +59,7 @@ if(mode==='prepare'){
  write('content/site.json',chrome);
  pricing.plans[0].price='99';
  pricing.plans[0].name='CMS Edited Lite Plan';
+ pricing.plans.push({name:'CMS Seventh Pricing Plan',price:'18',description:'New plan from CMS only',buyNowHref:'https://example.com/new-plan',features:['CMS Added Feature'],popular:false,color:'blue'});
  write('content/plans.json',pricing);
  faq.faqs[0].answer='CMS Edited FAQ Answer';
  write('content/faqs.json',faq);
@@ -118,6 +119,8 @@ if(mode==='prepare'){
  check('index.html','CMS Tools Menu Link');
  check('index.html','CMS Footer Tagline');
  check('pricing/index.html','CMS Edited Lite Plan');
+ check('pricing/index.html','CMS Seventh Pricing Plan');
+ check('pricing/index.html','CMS Added Feature');
  check('pricing/index.html','99'); // Astro SSR may insert a hydration boundary between $ and number
  // Accordion answers are lazy-mounted by Base UI and therefore packaged in the
  // hydrated JS rather than present in the static HTML while closed.
