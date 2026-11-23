@@ -21,7 +21,7 @@ type Props = {
 export function ProductPage({product}: Props) {
   const path = productPath(product.slug);
   const buyHref = product.buyHref ?? DEFAULT_BUY;
-  const logoSrc = `https://www.google.com/s2/favicons?domain=${product.domain}&sz=128`;
+  const logoSrc = product.imageUrl || `https://www.google.com/s2/favicons?domain=${product.domain}&sz=128`;
 
   usePageSeo({
     title: product.title,
