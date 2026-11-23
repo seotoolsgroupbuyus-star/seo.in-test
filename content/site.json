@@ -2,9 +2,9 @@
   "header": {
     "brand": "SEO Group Buy",
     "loginText": "Login",
-    "loginUrl": "https://pay.seogroupbuy.in/users/login",
+    "loginUrl": "https://pay.seogroupbuy.in",
     "signupText": "Get Started",
-    "signupUrl": "https://pay.seogroupbuy.in/users/signup",
+    "signupUrl": "https://pay.seogroupbuy.in",
     "links": [
       {
         "label": "Home",
