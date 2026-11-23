@@ -13,9 +13,9 @@ for(const slug of Object.keys(sectionMeta) as (keyof typeof sectionMeta)[]) {
   const file=path.join('dist',slug,'index.html');
   assert.ok(fs.existsSync(file),'Missing prerendered section: '+slug);
   const html=fs.readFileSync(file,'utf8');
-  const title=decode(html.match(/<title[^>]*>([\\s\\S]*?)<\\/title>/i)?.[1]||'');
-  const desc=decode(html.match(/<meta\\s+name="description"\\s+content="([^"]*)"/i)?.[1]||'');
-  const canonical=html.match(/<link\\s+rel="canonical"\\s+href="([^"]*)"/i)?.[1]||'';
+  const title=decode(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1]||'');
+  const desc=decode(html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1]||'');
+  const canonical=html.match(/<link\s+rel="canonical"\s+href="([^"]*)"/i)?.[1]||'';
   const expected=sectionSeo(slug);
   assert.equal(title,expected.title,'SEO title differs from React source: '+slug);
   assert.equal(desc,expected.description,'SEO description differs from React source: '+slug);
