@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "portalTitle": "Member Portal",
+    "liveStatus": "Live Status",
+    "accessLabel": "ACCESS",
+    "savingsLabel": "Savings",
+    "savingsValue": "$1,450/mo",
+    "uptimeLabel": "Uptime",
+    "uptimeValue": "99.9%"
+  },
+  "comparison": {
+    "toolColumn": "Premium Tool",
+    "originalColumn": "Individual Price",
+    "groupColumn": "Our Price",
+    "totalLabel": "Total Monthly Value",
+    "offerPrice": "$25",
+    "savingBadge": "Save 98%",
+    "savingFoot": "Every Single Month",
+    "cta": "Start Saving Now"
+  },
+  "access": {
+    "cta": "Get Instant Access",
+    "extensionTitle": "SEO Hub Extension",
+    "extensionBadge": "ONE-CLICK LOGIN"
+  },
+  "status": {
+    "uptimeLabel": "Avg Uptime",
+    "latencyLabel": "Avg Latency",
+    "responseLabel": "Response Time",
+    "uptime30Label": "Uptime (30d)",
+    "loadLabel": "Server Load",
+    "cards": [
+      {
+        "heading": "Global Clusters",
+        "description": "Distributed nodes in US, EU, and Asia to minimize latency for global users."
+      },
+      {
+        "heading": "Redundant Accounts",
+        "description": "Multiple premium accounts per tool to ensure zero \"limit reached\" errors."
+      },
+      {
+        "heading": "Auto-Healing",
+        "description": "Smart scripts that automatically detect and fix login issues in real-time."
+      }
+    ]
+  },
+  "tools": {
+    "requestHeading": "Need a Specific Tool?",
+    "requestDescription": "If your favorite tool is not listed, tell us. We review requests weekly and add the most needed SEO and marketing tools as soon as seats are available.",
+    "viewButton": "View all tools",
+    "requestButton": "Request a New Tool"
+  }
+}
