@@ -22,7 +22,8 @@ content:
       - name: slug
         label: Slug
         type: string
-        required: true        readonly: true
+        required: true
+        readonly: true
 
       - name: name
         label: Product Name
