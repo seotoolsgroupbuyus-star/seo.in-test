@@ -133,6 +133,8 @@ content:
         fields:
           - { name: name, label: Plan Name, type: string }
           - { name: price, label: Monthly Price USD, type: string }
+          - { name: popular, label: Highlight as Popular Plan, type: boolean }
+          - { name: color, label: Plan Accent (blue/purple), type: string }
           - { name: description, label: Plan Description, type: text }
           - { name: buyNowHref, label: Existing Checkout URL, type: string }
           - { name: features, label: Included Features, type: string, list: true }
