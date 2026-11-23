@@ -1,9 +1,15 @@
 ---
 import '../styles.css';
-const {title, description, pathname='/', robots='noindex,nofollow'}=Astro.props;
+const {title, description, pathname='/', robots='noindex,nofollow', product}=Astro.props;
 const origin='https://seogroupbuy.in';
 const canonical=origin + (pathname==='/'?'/':pathname.replace(/\/$/,'') );
 const ogImage=origin+'/og-image.svg';
+const productSchema=product ? JSON.stringify({
+  '@context':'https://schema.org','@type':'Product',
+  name:product.name,description:product.description,
+  url:origin+pathname,
+  offers:{'@type':'Offer',url:origin+pathname,price:product.priceMonthly,priceCurrency:'USD'}
+}).replace(/</g,'\\u003c') : null;
 const schema=JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'Organization','name':'SEO Group Buy','url':origin+'/','logo':ogImage},{'@type':'WebSite','name':'SEO Group Buy','url':origin+'/'}]});
 ---
 <!doctype html><html lang="en"><head>
@@ -17,4 +23,5 @@ const schema=JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':
 <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/>
 <meta name="twitter:description" content={description}/><meta name="twitter:image" content={ogImage}/>
 <script type="application/ld+json" set:html={schema}/>
+{productSchema && <script type="application/ld+json" set:html={productSchema}/>}
 </head><body><slot/></body></html>
