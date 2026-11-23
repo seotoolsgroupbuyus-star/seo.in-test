@@ -27,7 +27,13 @@ for(let index=0;index<pages.length;index++){
     images:[...document.images].map(i=>({src:i.currentSrc||i.src,alt:i.alt,loaded:i.complete&&i.naturalWidth>0})),
     viewport:{width:document.documentElement.scrollWidth,height:document.documentElement.scrollHeight},
     fonts:getComputedStyle(document.body).fontFamily,
-    background:getComputedStyle(document.body).backgroundColor
+    background:getComputedStyle(document.body).backgroundColor,
+    styles:Object.fromEntries(['body','header','h1','main','footer','button','.container'].flatMap(selector=>{
+      const el=document.querySelector(selector);
+      if(!el)return [];
+      const cs=getComputedStyle(el),rc=el.getBoundingClientRect();
+      return [[selector,{fontFamily:cs.fontFamily,fontSize:cs.fontSize,fontWeight:cs.fontWeight,lineHeight:cs.lineHeight,color:cs.color,background:cs.backgroundColor,padding:cs.padding,display:cs.display,width:Math.round(rc.width),height:Math.round(rc.height)}]];
+    }))
    }));
    pair[name]={status:response?.status()||0,...data};
    if(screenshotPaths.has(path))await page.screenshot({path:'visual-audit/'+(path.replaceAll('/','_')||'home')+'-'+name+'.png',fullPage:true});
@@ -45,7 +51,13 @@ for(let index=0;index<pages.length;index++){
   extraInternalLinks:bl.filter(x=>!al.includes(x)).slice(0,50),
   brokenPreviewImages:(b.images||[]).filter(x=>!x.loaded).map(x=>x.src),
   imageCounts:{origin:a.images?.length||0,preview:b.images?.length||0},
-  fontsMatch:a.fonts===b.fonts,viewport:{origin:a.viewport,preview:b.viewport}
+  fontsMatch:a.fonts===b.fonts,
+  designDifferences:Object.keys(a.styles||{}).flatMap(selector=>{
+    const live=a.styles?.[selector],astro=b.styles?.[selector];
+    if(!astro)return [{selector,field:'missing'}];
+    return Object.entries(live).filter(([key,value])=>key==='width'||key==='height'?Math.abs(Number(value)-Number(astro[key]))>6:value!==astro[key]).map(([field,value])=>({selector,field,live:value,astro:astro[field]}));
+  }),
+  viewport:{origin:a.viewport,preview:b.viewport}
  };
  report.push(pair);
  console.log(path,JSON.stringify(pair.compare));
