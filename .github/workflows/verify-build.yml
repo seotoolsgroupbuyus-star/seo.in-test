@@ -26,6 +26,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build Astro static site
         run: npm run build
+      - name: Assert four section SEO metadata values match hydrated React source
+        run: npx tsx scripts/verify-section-meta.ts
       - name: Check 77 routes and 52 Product JSON-LD blocks
         run: node scripts/verify-migration.mjs
       - name: Verify generated pages and assets
