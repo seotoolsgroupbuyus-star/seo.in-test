@@ -106,9 +106,9 @@ export function SystemStatus() {
               <Server className="text-blue-500 h-6 w-6" />
             </div>
             <div>
-              <p className="font-bold mb-2">Global Clusters</p>
+              <p className="font-bold mb-2">{labels.status.cards[0].heading}</p>
               <p className="text-sm text-zinc-500 leading-relaxed">
-                Distributed nodes in US, EU, and Asia to minimize latency for global users.
+                {labels.status.cards[0].description}
               </p>
             </div>
           </div>
@@ -117,9 +117,9 @@ export function SystemStatus() {
               <Database className="text-purple-500 h-6 w-6" />
             </div>
             <div>
-              <p className="font-bold mb-2">Redundant Accounts</p>
+              <p className="font-bold mb-2">{labels.status.cards[1].heading}</p>
               <p className="text-sm text-zinc-500 leading-relaxed">
-                Multiple premium accounts per tool to ensure zero "limit reached" errors.
+                {labels.status.cards[1].description}
               </p>
             </div>
           </div>
@@ -128,9 +128,9 @@ export function SystemStatus() {
               <Activity className="text-green-500 h-6 w-6" />
             </div>
             <div>
-              <p className="font-bold mb-2">Auto-Healing</p>
+              <p className="font-bold mb-2">{labels.status.cards[2].heading}</p>
               <p className="text-sm text-zinc-500 leading-relaxed">
-                Smart scripts that automatically detect and fix login issues in real-time.
+                {labels.status.cards[2].description}
               </p>
             </div>
           </div>
