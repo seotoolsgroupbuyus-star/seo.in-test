@@ -1,16 +1,14 @@
 import {Link} from 'react-router-dom';
 import {usePageSeo} from '../hooks/usePageSeo';
-import {getCompetitorMeta} from '../data/competitorMeta';
+import {sectionMeta} from '../seo/sectionMeta';
 import {blogPosts} from '../data/staticPages';
 
-const blogMeta = getCompetitorMeta('blog');
+const blogMeta = sectionMeta.blog;
 
 export function BlogIndexPage() {
   usePageSeo({
-    title: blogMeta?.title ?? 'Blog | SEO Group Buy',
-    description:
-      blogMeta?.description ??
-      'Guides and articles about group buy SEO and AI tools from SEO Group Buy.',
+    title: blogMeta.title,
+    description: blogMeta.description,
     path: '/blog',
   });
 
