@@ -8,6 +8,12 @@ const files=dir=>fs.readdirSync(dir).filter(f=>f.endsWith('.json'));
 const products=files('content/products').map(f=>read('content/products/'+f));
 const pages=files('content/pages').map(f=>read('content/pages/'+f));
 const home=read('content/homepage.json');
+const pricing=read('content/plans.json');
+const faq=read('content/faqs.json');
+assert.equal(pricing.plans.length,6,'CMS pricing plans missing');
+assert.equal(faq.faqs.length,5,'CMS FAQ items missing');
+for(const p of pricing.plans){assert.ok(p.name&&p.price&&p.buyNowHref&&p.features.length===5)}
+for(const item of faq.faqs)assert.ok(item.question&&item.answer);
 assert.equal(products.length,52);
 assert.equal(pages.length,20);
 for(const product of products){
@@ -33,6 +39,11 @@ if(mode==='prepare'){
  about.title='CMS About Custom SEO Title';
  about.seoDescription='CMS About Custom Description';
  write(pageFile,about);
+ pricing.plans[0].price='99';
+ pricing.plans[0].name='CMS Edited Lite Plan';
+ write('content/plans.json',pricing);
+ faq.faqs[0].answer='CMS Edited FAQ Answer';
+ write('content/faqs.json',faq);
  home.heading='CMS Homepage Changed';
  home.primaryButton='CMS Join Today';
  write('content/homepage.json',home);
@@ -45,9 +56,12 @@ if(mode==='prepare'){
  assert.ok(product.includes('$37'), 'CMS product price change not visible');
  assert.ok(product.includes('37/mo'), 'CMS product title price stale');
  assert.ok(product.includes('207/year'), 'CMS product SEO description stale');
+ check('pricing/index.html','CMS Edited Lite Plan');
+ check('pricing/index.html','$99');
+ check('faq/index.html','CMS Edited FAQ Answer');
  const about=check('about-us/index.html','CMS About Edited');
  for(const v of ['CMS body content updated without editing HTML','CMS About Custom SEO Title','CMS About Custom Description'])assert.ok(about.includes(v),'CMS page edit not present: '+v);
  console.log('PASS: CMS edits produce matching Astro HTML and SEO metadata.');
 }else if(mode==='validate'){
- console.log('PASS: 52 products, 20 page/blog records, homepage and editable CMS schema.');
+ console.log('PASS: 52 products, 20 page/blog records, homepage, 6 plans and 5 FAQs.');
 }else throw Error('Usage: node scripts/verify-cms-editing.mjs validate|prepare|check');
