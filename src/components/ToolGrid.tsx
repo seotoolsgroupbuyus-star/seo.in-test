@@ -106,8 +106,7 @@ export function ToolGrid() {
           <div className="blue-glow -top-20 -right-20 h-64 w-64 opacity-20" />
           <h3 className="mb-4 text-2xl font-bold font-display md:text-3xl">{labels.tools.requestHeading}</h3>
           <p className="mx-auto mb-8 max-w-xl text-zinc-400">
-            If your favorite tool is not listed, tell us. We review requests weekly and add the most needed SEO
-            and marketing tools as soon as seats are available.
+            {labels.tools.requestDescription}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
