@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import {useMemo, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Search} from 'lucide-react';
@@ -33,10 +34,9 @@ export function AllToolsPage() {
   return (
     <main className="flex-grow bg-black pt-20">
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <h1 className="text-4xl font-bold font-display md:text-6xl">All Tools</h1>
+        <h1 className="text-4xl font-bold font-display md:text-6xl">{labels.allTools.heading}</h1>
         <p className="mt-4 max-w-2xl text-lg text-zinc-400">
-          Browse {products.length}+ premium SEO, AI, writing, and design tools at group buy pricing. Search by
-          name or explore by category.
+          {labels.allTools.introBefore} {products.length}{labels.allTools.introAfter}
         </p>
 
         <div className="relative mt-10 max-w-md">
@@ -45,7 +45,7 @@ export function AllToolsPage() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search tools..."
+            placeholder={labels.allTools.searchPlaceholder}
             className="h-12 w-full rounded-2xl border border-white/10 bg-white/5 pl-12 pr-4 text-sm outline-none focus:border-blue-500"
           />
         </div>
