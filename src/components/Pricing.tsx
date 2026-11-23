@@ -25,13 +25,14 @@ import {
 import type { ElementType } from "react";
 import { motion } from "motion/react";
 import { shopCartUrl } from "../data/shopLinks";
+import cmsPricing from "../../content/plans.json";
 
 type PlanFeature = {
   label: string;
   icon: ElementType;
 };
 
-const plans = [
+const originalPlans = [
   {
     name: "Lite Essentials",
     price: "10",
@@ -130,6 +131,15 @@ const plans = [
     color: "blue"
   },
 ];
+const plans=originalPlans.map((original,index)=>{
+  const edited=cmsPricing.plans[index];
+  if(!edited)return original;
+  return {...original,name:edited.name||original.name,price:edited.price||original.price,
+    description:edited.description||original.description,
+    buyNowHref:edited.buyNowHref||original.buyNowHref,
+    features:original.features.map((feature,i)=>({...feature,label:edited.features?.[i]||feature.label}))
+  };
+});
 
 export function Pricing({showIntro = true}: {showIntro?: boolean}) {
   return (
