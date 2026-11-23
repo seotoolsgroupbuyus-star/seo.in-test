@@ -71,7 +71,7 @@ export function ToolGrid() {
                     <div className="relative z-10 flex items-center gap-4">
                       <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white p-2 shadow-lg transition-transform group-hover:scale-110">
                         <img
-                          src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=128`}
+                          src={tool.imageUrl || `https://www.google.com/s2/favicons?domain=${tool.domain}&sz=128`}
                           alt={tool.name}
                           className="h-full w-full object-contain"
                           referrerPolicy="no-referrer"
