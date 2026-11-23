@@ -45,7 +45,10 @@ for(let i=0;i<routes.length;i+=4){
   const extra=(b.links||[]).filter(x=>!(a.links||[]).includes(x));
   if(missing.length||extra.length)issues.push('links');
   if(a.images?.length!==b.images?.length)issues.push('image_count');
-  const previewOnlyBroken=(b.images||[]).filter((img,index)=>!img.loaded && a.images?.[index]?.loaded);
+  const previewOnlyBroken=(b.images||[]).filter((img,index)=>!img.loaded && a.images?.[index]?.loaded && !img.src.startsWith('https://www.google.com/s2/favicons'));
+  // Google favicon proxy is an external, timing-dependent service. Keep the
+  // broken assets in the report, but do not treat intermittent proxy failures
+  // as evidence that the Astro layout or local images are missing.
   if(previewOnlyBroken.length)issues.push('preview_only_image_failure');
   if((b.jsonld||[]).some(x=>x.invalid))issues.push('invalid_schema');
   if(b.errors?.length)issues.push('browser_javascript');
