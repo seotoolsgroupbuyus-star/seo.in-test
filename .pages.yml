@@ -137,3 +137,49 @@ content:
         fields:
           - { name: question, label: Question, type: string }
           - { name: answer, label: Answer, type: text }
+
+  - name: site_settings
+    label: Site Header and Footer
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: header
+        label: Header and Mobile Menu
+        type: object
+        fields:
+          - { name: brand, label: Website Brand Name, type: string }
+          - { name: loginText, label: Login Button Text, type: string }
+          - { name: loginUrl, label: Login Button URL, type: string }
+          - { name: signupText, label: Signup Button Text, type: string }
+          - { name: signupUrl, label: Signup Button URL, type: string }
+          - name: links
+            label: Menu Links
+            type: object
+            list: true
+            fields:
+              - { name: label, label: Link Text, type: string }
+              - { name: url, label: Destination URL, type: string }
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - { name: brand, label: Footer Brand, type: string }
+          - { name: tagline, label: Short Tagline, type: string }
+          - { name: description, label: Footer Description, type: text }
+          - { name: newsletterHeading, label: Newsletter Heading, type: string }
+          - { name: newsletterDescription, label: Newsletter Description, type: text }
+          - name: quickLinks
+            label: Footer Links
+            type: object
+            list: true
+            fields:
+              - { name: label, label: Link Text, type: string }
+              - { name: url, label: Destination URL, type: string }
+          - name: legalLinks
+            label: Legal Links
+            type: object
+            list: true
+            fields:
+              - { name: label, label: Link Text, type: string }
+              - { name: url, label: Destination URL, type: string }
