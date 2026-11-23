@@ -187,3 +187,66 @@ content:
             fields:
               - { name: label, label: Link Text, type: string }
               - { name: url, label: Destination URL, type: string }
+
+  - name: home_sections
+    label: Homepage - Testimonials, Features, Steps and Logos
+    type: file
+    path: content/home-sections.json
+    format: json
+    fields:
+      - name: testimonials
+        label: Customer testimonials
+        type: object
+        fields:
+          - { name: heading, label: Section Heading, type: string }
+          - { name: description, label: Section Intro, type: text }
+          - { name: subheading, label: Reviews Heading, type: string }
+          - name: items
+            label: Reviews
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{name}" }
+            fields:
+              - { name: name, label: Customer Name, type: string }
+              - { name: role, label: Customer Role, type: string }
+              - { name: content, label: Review Text, type: text }
+              - { name: rating, label: Star Rating, type: number }
+      - name: features
+        label: Benefits
+        type: object
+        fields:
+          - name: items
+            label: Benefits
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{title}" }
+            fields:
+              - { name: title, label: Heading, type: string }
+              - { name: description, label: Description, type: text }
+      - name: process
+        label: How It Works
+        type: object
+        fields:
+          - { name: heading, label: Section Heading, type: string }
+          - { name: description, label: Section Intro, type: text }
+          - name: steps
+            label: Steps
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{title}" }
+            fields:
+              - { name: title, label: Step Heading, type: string }
+              - { name: description, label: Step Description, type: text }
+      - name: logoCloud
+        label: Supported Tools
+        type: object
+        fields:
+          - { name: heading, label: Section Heading, type: string }
+          - name: logos
+            label: Tool Logos
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: "{name}" }
+            fields:
+              - { name: name, label: Tool Name, type: string }
+              - { name: domain, label: Logo Source Domain, type: string }
