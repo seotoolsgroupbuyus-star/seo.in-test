@@ -67,7 +67,7 @@ export function AllToolsPage() {
                   >
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-2">
                       <img
-                        src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=128`}
+                        src={tool.imageUrl || `https://www.google.com/s2/favicons?domain=${tool.domain}&sz=128`}
                         alt=""
                         className="h-full w-full object-contain"
                         referrerPolicy="no-referrer"
