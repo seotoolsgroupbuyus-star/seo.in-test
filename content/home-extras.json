@@ -1,0 +1,158 @@
+{
+  "whyChoose": {
+    "heading": "Why Choose Our Group Buy SEO Tools",
+    "items": [
+      {
+        "title": "Affordable Monthly Access",
+        "description": "Pay less each month and keep your workflow running without stress."
+      },
+      {
+        "title": "Tools That Matter Most",
+        "description": "Get the tools used daily for audits keywords backlinks and content work."
+      },
+      {
+        "title": "Simple Dashboard Access",
+        "description": "Login once then open any tool from one clean dashboard."
+      },
+      {
+        "title": "Fast Support When Needed",
+        "description": "Message support anytime and get quick help when access needs a refresh."
+      }
+    ]
+  },
+  "priceComparison": {
+    "heading": "Save More on SEO Tools Every Month",
+    "description": "If you buy each SEO tool separately you end up paying hundreds every month. With our SEO group buy you get the same core features you need for audits, keywords, and competitor research at a price that makes sense.",
+    "cards": [
+      {
+        "heading": "Affordable Access Without High Monthly Costs",
+        "description": "Get stable access to the tools you need while your monthly cost stays low."
+      },
+      {
+        "heading": "Get More Tools for Less",
+        "description": "Use one plan to cover keyword research audits backlinks and daily reporting work."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Ahrefs Lite",
+        "original": 99,
+        "our": "Included"
+      },
+      {
+        "name": "SEMrush Pro",
+        "original": 129,
+        "our": "Included"
+      },
+      {
+        "name": "Moz Pro",
+        "original": 99,
+        "our": "Included"
+      },
+      {
+        "name": "Canva Pro",
+        "original": 12,
+        "our": "Included"
+      },
+      {
+        "name": "Grammarly Premium",
+        "original": 30,
+        "our": "Included"
+      },
+      {
+        "name": "Jasper AI",
+        "original": 49,
+        "our": "Included"
+      },
+      {
+        "name": "Envato Elements",
+        "original": 33,
+        "our": "Included"
+      }
+    ]
+  },
+  "access": {
+    "badge": "Instant One-Click Access",
+    "heading": "Easy Access System",
+    "description": "Stop dealing with login issues and constant rechecks. Open your dashboard, click the tool you need, and start working. This one click access setup is built for SEO tools group buy users who want speed without the headache.",
+    "items": [
+      {
+        "title": "Secure Session Bridge",
+        "description": "Your work stays private and your session stays stable."
+      },
+      {
+        "title": "Multi-Region Support",
+        "description": "Smooth access from different locations when you need it."
+      },
+      {
+        "title": "Fast Loading",
+        "description": "Quick tool open times so audits and research do not slow you down."
+      }
+    ]
+  },
+  "status": {
+    "badge": "All Systems Operational",
+    "heading": "Reliable Access That Keeps You Working",
+    "description": "We keep a close eye on tool access day and night. When a seat gets slow or a login stops working, we rotate sessions fast so your SEO audits and keyword research do not get stuck.",
+    "averageUptime": "99.99%",
+    "averageLatency": "112ms",
+    "supportedHeading": "Supported Tools",
+    "tools": [
+      {
+        "name": "Ahrefs",
+        "status": "Operational",
+        "latency": "120ms",
+        "uptime": "99.98%",
+        "load": 45
+      },
+      {
+        "name": "SEMrush",
+        "status": "Operational",
+        "latency": "145ms",
+        "uptime": "99.95%",
+        "load": 62
+      },
+      {
+        "name": "Moz Pro",
+        "status": "Operational",
+        "latency": "98ms",
+        "uptime": "99.99%",
+        "load": 28
+      },
+      {
+        "name": "SpyFu",
+        "status": "Operational",
+        "latency": "110ms",
+        "uptime": "99.97%",
+        "load": 35
+      },
+      {
+        "name": "Majestic",
+        "status": "Operational",
+        "latency": "160ms",
+        "uptime": "99.92%",
+        "load": 55
+      },
+      {
+        "name": "Canva Pro",
+        "status": "Operational",
+        "latency": "45ms",
+        "uptime": "99.99%",
+        "load": 12
+      }
+    ]
+  },
+  "toolGrid": {
+    "heading": "Complete Group Buy SEO Tools Collection",
+    "description": "Pick the tools you actually use for SEO. Keyword research, backlinks, audits, writing, and design all in one place. This SEO tools group buy helps freelancers and agencies keep costs low and productivity high.",
+    "searchPlaceholder": "Search for a tool..."
+  },
+  "faqIntro": {
+    "heading": "Got Questions About Group Buy SEO Tools?",
+    "description": "Clear answers about SEO group buy access, tool usage, privacy, and support. If you are new to group buy SEO tools you will find this section helpful."
+  },
+  "pricingIntro": {
+    "heading": "Choose Your Plan",
+    "description": "Choose the plan that fits your work. Pay monthly, keep it simple, and upgrade anytime as your projects grow. Every plan"
+  }
+}
