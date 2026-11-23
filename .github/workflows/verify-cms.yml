@@ -21,9 +21,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate Pages CMS YAML and ten collections
+      - name: Validate Pages CMS YAML and eleven collections
         run: |
-          ruby -e 'require "yaml"; y=YAML.load_file(".pages.yml", aliases: true); c=y.fetch("content"); abort "Expected ten CMS editors" unless c.size==10; abort "CMS merge protection disabled" unless y.dig("settings","content","merge") == true; puts "CMS YAML and all ten editors valid"'
+          ruby -e 'require "yaml"; y=YAML.load_file(".pages.yml", aliases: true); c=y.fetch("content"); abort "Expected eleven CMS editors" unless c.size==11; abort "CMS merge protection disabled" unless y.dig("settings","content","merge") == true; puts "CMS YAML and all eleven editors valid"'
       - name: Check CMS source records and fields
         run: node scripts/verify-cms-editing.mjs validate
       - name: Simulate CMS content changes (CI only)
