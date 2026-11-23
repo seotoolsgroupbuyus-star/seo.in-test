@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom';
 import {FAQ} from '../components/FAQ';
 import {usePageSeo} from '../hooks/usePageSeo';
+import {sectionMeta} from '../seo/sectionMeta';
 
 export function FAQPage() {
   usePageSeo({
-    title: 'FAQ',
-    description:
-      'Frequently asked questions about SEO Group Buy — how group buy access works, data privacy, refunds, uptime, and using tools for client projects.',
+    title: sectionMeta.faq.title,
+    description: sectionMeta.faq.description,
     path: '/faq',
   });
 
