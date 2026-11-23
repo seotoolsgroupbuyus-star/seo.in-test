@@ -2,17 +2,15 @@ import {useMemo, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Search} from 'lucide-react';
 import {usePageSeo} from '../hooks/usePageSeo';
-import {getCompetitorMeta} from '../data/competitorMeta';
+import {sectionMeta} from '../seo/sectionMeta';
 import {productPath, products, productsByCategory, formatMonthlyPriceLabel} from '../data/products';
 
-const allToolsMeta = getCompetitorMeta('all-tools');
+const allToolsMeta = sectionMeta['all-tools'];
 
 export function AllToolsPage() {
   usePageSeo({
-    title: allToolsMeta?.title ?? 'All Tools | SEO Group Buy',
-    description:
-      allToolsMeta?.description ??
-      'Browse all group buy SEO, AI, writing, and design tools available on SEO Group Buy.',
+    title: allToolsMeta.title,
+    description: allToolsMeta.description,
     path: '/all-tools',
   });
 
