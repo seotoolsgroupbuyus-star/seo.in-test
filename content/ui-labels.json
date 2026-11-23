@@ -16,12 +16,14 @@
     "offerPrice": "$25",
     "savingBadge": "Save 98%",
     "savingFoot": "Every Single Month",
-    "cta": "Start Saving Now"
+    "cta": "Start Saving Now",
+    "ctaUrl": "https://seogroupsbuy.com/users/signup"
   },
   "access": {
     "cta": "Get Instant Access",
     "extensionTitle": "SEO Hub Extension",
-    "extensionBadge": "ONE-CLICK LOGIN"
+    "extensionBadge": "ONE-CLICK LOGIN",
+    "ctaUrl": "https://seogroupsbuy.com/users/signup"
   },
   "status": {
     "uptimeLabel": "Avg Uptime",
@@ -48,6 +50,8 @@
     "requestHeading": "Need a Specific Tool?",
     "requestDescription": "If your favorite tool is not listed, tell us. We review requests weekly and add the most needed SEO and marketing tools as soon as seats are available.",
     "viewButton": "View all tools",
-    "requestButton": "Request a New Tool"
+    "requestButton": "Request a New Tool",
+    "viewUrl": "/all-tools",
+    "requestUrl": "https://wa.me/447845432224"
   }
 }
