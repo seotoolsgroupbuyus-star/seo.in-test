@@ -6,6 +6,8 @@ on:
       - 'astro/**'
       - 'src/**'
       - 'content/**'
+      - 'scripts/verify-section-meta.ts'
+      - 'scripts/verify-migration.mjs'
       - 'public/**'
       - 'package.json'
       - 'astro.config.mjs'
