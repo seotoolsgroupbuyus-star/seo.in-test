@@ -1,28 +1,9 @@
+import cms from '../../content/home-extras.json';
 import { motion } from "motion/react";
 import { BadgeDollarSign, ListChecks, LayoutGrid, Headphones } from "lucide-react";
 
-const items = [
-  {
-    title: "Affordable Monthly Access",
-    desc: "Pay less each month and keep your workflow running without stress.",
-    icon: BadgeDollarSign,
-  },
-  {
-    title: "Tools That Matter Most",
-    desc: "Get the tools used daily for audits keywords backlinks and content work.",
-    icon: ListChecks,
-  },
-  {
-    title: "Simple Dashboard Access",
-    desc: "Login once then open any tool from one clean dashboard.",
-    icon: LayoutGrid,
-  },
-  {
-    title: "Fast Support When Needed",
-    desc: "Message support anytime and get quick help when access needs a refresh.",
-    icon: Headphones,
-  },
-];
+const icons=[BadgeDollarSign,ListChecks,LayoutGrid,Headphones];
+const items=cms.whyChoose.items.map((item,index)=>({...item,desc:item.description,icon:icons[index%icons.length]}));
 
 export function WhyChoose() {
   return (
@@ -36,7 +17,7 @@ export function WhyChoose() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-bold font-display mb-6"
           >
-            Why Choose Our Group Buy SEO Tools
+            {cms.whyChoose.heading}
           </motion.h2>
         </div>
 
