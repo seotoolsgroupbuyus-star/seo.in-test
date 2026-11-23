@@ -1,3 +1,4 @@
+import homepage from '../../content/homepage.json';
 export const SITE_ORIGIN = 'https://seogroupbuy.in';
 export const BRAND_NAME = 'SEO Group Buy';
 
@@ -17,8 +18,8 @@ export function withBrandTitle(title: string): string {
 }
 
 export const DEFAULT_META = {
-  title: withBrandTitle('Affordable Group Buy SEO Tools at Better Prices'),
+  title: withBrandTitle(homepage.seoTitle || 'Affordable Group Buy SEO Tools at Better Prices'),
   description:
-    'Access popular group buy SEO tools at affordable prices with simple plans, reliable access, and tools built for everyday SEO work.',
+    homepage.seoDescription || 'Access popular group buy SEO tools at affordable prices with simple plans, reliable access, and tools built for everyday SEO work.',
   path: '/',
 } as const;
