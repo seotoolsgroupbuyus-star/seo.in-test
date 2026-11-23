@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom';
 import {Pricing} from '../components/Pricing';
 import {usePageSeo} from '../hooks/usePageSeo';
+import {sectionMeta} from '../seo/sectionMeta';
 
 export function PricingPage() {
   usePageSeo({
-    title: 'Pricing Plans',
-    description:
-      'Compare SEO Group Buy plans — Lite $10/mo, Growth Starter $15/mo, Ahrefs Power Bundle $25/mo, Writer Toolkit, and more. Affordable group buy SEO tool access.',
+    title: sectionMeta.pricing.title,
+    description: sectionMeta.pricing.description,
     path: '/pricing',
   });
 
