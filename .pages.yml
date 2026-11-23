@@ -22,7 +22,8 @@ content:
       - name: slug
         label: Slug
         type: string
-        required: true
+        required: true        readonly: true
+
       - name: name
         label: Product Name
         type: string
@@ -69,6 +70,7 @@ content:
       - name: slug
         label: Original URL Slug
         type: string
+        readonly: true
       - name: heading
         label: Heading
         type: string
