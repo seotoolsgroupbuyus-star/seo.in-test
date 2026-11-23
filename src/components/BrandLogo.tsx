@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import site from "../../content/site.json";
 
 type BrandLogoProps = {
   className?: string;
@@ -20,6 +21,9 @@ export function BrandLogo({
         )}
         aria-hidden="true"
       >
+        {site.header.logoUrl ? (
+          <img src={site.header.logoUrl} alt="" className="h-7 w-7 object-contain" />
+        ) : (
         <svg
           viewBox="0 0 40 40"
           className="h-7 w-7"
@@ -57,6 +61,7 @@ export function BrandLogo({
             strokeLinecap="round"
           />
         </svg>
+        )}
       </div>
     </div>
   );
