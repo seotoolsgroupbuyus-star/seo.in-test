@@ -1,3 +1,4 @@
+import cmsProductDetails from '../../content/product-details.json';
 import {Button} from '@/components/ui/button';
 import {ArrowRight} from 'lucide-react';
 import {motion} from 'motion/react';
@@ -29,13 +30,9 @@ export function ProductPage({product}: Props) {
     path,
   });
 
-  const benefitRows = [
-    {benefit: 'Affordable Access', helps: 'Use premium features without full retail pricing'},
-    {benefit: 'Simple Setup', helps: 'Get started quickly after purchase confirmation'},
-    {benefit: 'Team Friendly', helps: 'Useful for freelancers, agencies, and SEO teams'},
-    {benefit: 'Reliable Support', helps: 'Reach us when you need help with access'},
-    {benefit: 'Flexible Plans', helps: 'Choose monthly or yearly based on your workload'},
-  ] as const;
+  const detail=cmsProductDetails.products.find(p=>p.slug===product.slug);
+  const benefitRows=detail?.benefitRows||[];
+
 
   return (
     <main className="flex-grow bg-black pt-20">
@@ -167,8 +164,7 @@ export function ProductPage({product}: Props) {
             <article className="rounded-2xl border border-white/10 bg-zinc-950/80 p-6">
               <h3 className="text-lg font-bold font-display text-white">Why Teams Use It</h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                {product.name} helps with everyday SEO and marketing workflows while keeping costs lower
-                through group buy pricing — ideal for freelancers, agencies, and in-house teams.
+                {detail?.teamDescription}
               </p>
             </article>
           </div>
@@ -179,20 +175,7 @@ export function ProductPage({product}: Props) {
         <section>
           <h2 className="text-2xl font-bold font-display md:text-3xl">Key Benefits of {product.name}</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: 'Lower Monthly Cost',
-                body: `Get ${product.name} access at a group buy price instead of paying full retail every month.`,
-              },
-              {
-                title: 'Faster Workflows',
-                body: 'Use the tool for research, content, design, or audits without waiting on large budget approvals.',
-              },
-              {
-                title: 'Easy to Start',
-                body: 'Purchase your plan, get access confirmed, and start using the tool for your projects right away.',
-              },
-            ].map(({title, body}) => (
+            {(detail?.keyBenefits||[]).map(({title, body}) => (
               <article key={title} className="rounded-2xl border border-white/10 bg-zinc-950/80 p-6">
                 <h3 className="text-lg font-bold font-display text-white">{title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-400">{body}</p>
