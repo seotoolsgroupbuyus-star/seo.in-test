@@ -69,7 +69,10 @@ if(mode==='prepare'){
  check('index.html','CMS Footer Tagline');
  check('pricing/index.html','CMS Edited Lite Plan');
  check('pricing/index.html','99'); // Astro SSR may insert a hydration boundary between $ and number
- check('faq/index.html','CMS Edited FAQ Answer');
+ // Accordion answers are lazy-mounted by Base UI and therefore packaged in the
+ // hydrated JS rather than present in the static HTML while closed.
+ const builtJs=fs.readdirSync('dist/_astro').filter(name=>name.endsWith('.js')).map(name=>fs.readFileSync('dist/_astro/'+name,'utf8')).join('');
+ assert.ok(builtJs.includes('CMS Edited FAQ Answer'),'CMS FAQ answer missing from client-side bundle');
  const about=check('about-us/index.html','CMS About Edited');
  for(const v of ['CMS body content updated without editing HTML','CMS About Custom SEO Title','CMS About Custom Description'])assert.ok(about.includes(v),'CMS page edit not present: '+v);
  console.log('PASS: CMS edits produce matching Astro HTML and SEO metadata.');
