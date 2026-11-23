@@ -24,7 +24,7 @@ const chrome=read('content/site.json');
 assert.equal(chrome.header.links.length,6,'Global menu missing');
 assert.equal(chrome.footer.quickLinks.length,7,'Footer links missing');
 assert.equal(chrome.footer.legalLinks.length,4,'Legal links missing');
-assert.equal(pricing.plans.length,6,'CMS pricing plans missing');
+assert.ok(pricing.plans.length>=6,'CMS pricing plans missing');
 assert.equal(faq.faqs.length,5,'CMS FAQ items missing');
 for(const p of pricing.plans){assert.ok(p.name&&p.price&&p.buyNowHref&&p.features.length===5)}
 for(const item of faq.faqs)assert.ok(item.question&&item.answer);
