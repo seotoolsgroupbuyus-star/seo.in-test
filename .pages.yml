@@ -190,6 +190,12 @@ content:
     path: content/site.json
     format: json
     fields:
+      - name: seo
+        label: Global Search and Social Images
+        type: object
+        fields:
+          - { name: socialImage, label: Social Sharing Image (upload), type: image }
+          - { name: favicon, label: Browser Favicon (upload), type: image }
       - name: header
         label: Header and Mobile Menu
         type: object
