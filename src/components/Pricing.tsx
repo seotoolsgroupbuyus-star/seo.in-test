@@ -132,13 +132,17 @@ const originalPlans = [
     color: "blue"
   },
 ];
-const plans=originalPlans.map((original,index)=>{
-  const edited=cmsPricing.plans[index];
-  if(!edited)return original;
-  return {...original,name:edited.name||original.name,price:edited.price||original.price,
+const plans=cmsPricing.plans.map((edited,index)=>{
+  const original=originalPlans[index]||originalPlans[0];
+  const iconPool=original.features;
+  return {...original,
+    name:edited.name||original.name,
+    price:edited.price||original.price,
     description:edited.description||original.description,
     buyNowHref:edited.buyNowHref||original.buyNowHref,
-    features:original.features.map((feature,i)=>({...feature,label:edited.features?.[i]||feature.label}))
+    popular:typeof edited.popular==='boolean'?edited.popular:original.popular,
+    color:edited.color||original.color,
+    features:(edited.features||[]).map((label,i)=>({label,icon:iconPool[i%iconPool.length]?.icon||Search}))
   };
 });
 
