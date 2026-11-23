@@ -1,0 +1,33 @@
+name: Verify Pages CMS edits and Astro output
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'src/**'
+      - 'astro/**'
+      - '.pages.yml'
+      - 'scripts/verify-cms-editing.mjs'
+      - '.github/workflows/verify-cms.yml'
+permissions:
+  contents: read
+jobs:
+  cms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check CMS source records and fields
+        run: node scripts/verify-cms-editing.mjs validate
+      - name: Simulate CMS content changes (CI only)
+        run: node scripts/verify-cms-editing.mjs prepare
+      - name: Install and build Astro
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+      - name: Check edited content and SEO in prerendered pages
+        run: node scripts/verify-cms-editing.mjs check
