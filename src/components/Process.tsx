@@ -1,32 +1,9 @@
+import homeSections from '../../content/home-sections.json';
 import { motion } from "motion/react";
 import { UserPlus, CreditCard, LayoutDashboard, Rocket } from "lucide-react";
 
-const steps = [
-  {
-    title: "Create Account",
-    desc: "Sign up in seconds with Google or email. No complex verification required.",
-    icon: UserPlus,
-    color: "blue"
-  },
-  {
-    title: "Choose Plan",
-    desc: "Select the toolkit that fits your needs. Instant activation upon payment.",
-    icon: CreditCard,
-    color: "purple"
-  },
-  {
-    title: "Access Portal",
-    desc: "Log in to our secure web portal to see your unified tool dashboard.",
-    icon: LayoutDashboard,
-    color: "blue"
-  },
-  {
-    title: "Start Growing",
-    desc: "Launch any tool with one click and start dominating your niche.",
-    icon: Rocket,
-    color: "green"
-  }
-];
+const processIcons=[UserPlus,CreditCard,LayoutDashboard,Rocket];
+const steps=homeSections.process.steps.map((item,index)=>({...item,desc:item.description,icon:processIcons[index%processIcons.length]}));
 
 export function Process() {
   return (
@@ -34,10 +11,10 @@ export function Process() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">
-            How Our Group Buy System Works
+            {homeSections.process.heading}
           </h2>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            Create your account, choose a plan, then open the tools you need from one dashboard. It is simple even if you are new to SEO group buy tools.
+            {homeSections.process.description}
           </p>
         </div>
 
