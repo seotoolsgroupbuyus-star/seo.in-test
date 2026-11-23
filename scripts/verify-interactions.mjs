@@ -3,47 +3,50 @@ import {writeFileSync} from 'node:fs';
 const sites={live:'https://seogroupbuy.in',preview:'https://seo-in-test.bilalfadi11221333.workers.dev'};
 const browser=await chromium.launch({headless:true});
 const results=[];
-async function run(site,base){
- const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
- const failures=[];
+async function test(site,base,name,route,fn){
+ const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
  try{
-  const res=await page.goto(base+'/',{waitUntil:'domcontentloaded',timeout:35000});
-  await page.locator('h1').first().waitFor({timeout:15000});
-  const nav=page.getByRole('button',{name:'Open menu'}).first();
-  await nav.click({timeout:8000});
-  await page.getByRole('link',{name:'Pricing'}).last().waitFor({state:'visible',timeout:5000});
-  results.push({site,test:'mobile_navigation_open',passed:true,status:res.status()});
-  await page.keyboard.press('Escape');
-  const chat=page.getByRole('button',{name:'Open chat widget'});
-  await chat.click();
-  await page.getByText('Chat with us').waitFor({state:'visible'});
-  results.push({site,test:'chat_widget_open',passed:true});
-  await page.getByRole('button',{name:'Close chat widget'}).first().click();
-  results.push({site,test:'chat_widget_close',passed:true});
-  await page.goto(base+'/all-tools',{waitUntil:'domcontentloaded',timeout:35000});
-  const search=page.getByPlaceholder('Search tools...');
-  await search.waitFor({state:'visible'});
-  await search.fill('Ahrefs');
-  await page.getByRole('link',{name:/Ahrefs/i}).first().waitFor({state:'visible'});
-  const count=await page.locator('main a[href*="tool/"]').count();
-  if(count!==1)failures.push('Search Ahrefs should filter to one product, found '+count);
-  results.push({site,test:'tool_search_filter',passed:count===1,count});
-  await page.goto(base+'/faq',{waitUntil:'domcontentloaded',timeout:35000});
-  const question=page.getByText('How does the group buy system actually work?',{exact:true}).first();
-  await question.waitFor({state:'visible'});
-  await question.click();
-  const expanded=await page.locator('[data-state="open"]').count();
-  if(!expanded)failures.push('FAQ accordion did not expand');
-  results.push({site,test:'faq_expand',passed:expanded>0});
- }catch(e){failures.push(String(e));results.push({site,test:'interaction_error',passed:false,error:String(e)})}
+  const response=await page.goto(base+route,{waitUntil:'domcontentloaded',timeout:35000});
+  await page.locator('h1').first().waitFor({state:'visible',timeout:15000});
+  await page.waitForTimeout(500);
+  const details=await fn(page);
+  results.push({site,name,passed:true,httpStatus:response?.status(),details});
+ }catch(e){results.push({site,name,passed:false,error:String(e)})}
  finally{await page.close()}
- return failures;
 }
-const issues={};
-for(const [site,base] of Object.entries(sites))issues[site]=await run(site,base);
+for(const [site,base] of Object.entries(sites)){
+ await test(site,base,'mobile-menu','/',async page=>{
+  await page.getByRole('button',{name:'Open menu'}).first().click({timeout:8000});
+  await page.getByRole('link',{name:'Pricing'}).last().waitFor({state:'visible',timeout:5000});
+  return 'Pricing link visible after opening mobile menu';
+ });
+ await test(site,base,'chat-widget','/',async page=>{
+  const button=page.getByRole('button',{name:'Open chat widget'});
+  await button.click({timeout:8000});
+  await page.getByText('Chat with us').waitFor({state:'visible',timeout:7000});
+  await page.getByRole('button',{name:'Close chat widget'}).first().click({timeout:7000});
+  await page.getByText('Chat with us').waitFor({state:'hidden',timeout:7000});
+  return 'Chat opens and closes';
+ });
+ await test(site,base,'tool-search','/all-tools',async page=>{
+  await page.getByPlaceholder('Search tools...').fill('Ahrefs');
+  await page.getByRole('link',{name:/Ahrefs/i}).first().waitFor({state:'visible',timeout:7000});
+  const count=await page.locator('main a[href*="tool/"]').count();
+  if(count!==1)throw Error('Filtered product count expected 1, got '+count);
+  return 'Ahrefs search result count 1';
+ });
+ await test(site,base,'faq-accordion','/faq',async page=>{
+  const question=page.getByText('How does the group buy system actually work?',{exact:true}).first();
+  await question.click({timeout:8000});
+  await page.getByText(/proprietary cloud-bridge technology/i).first().waitFor({state:'visible',timeout:7000});
+  return 'FAQ answer visible after click';
+ });
+}
 await browser.close();
-const onlyPreview=results.filter(x=>x.site==='preview'&&!x.passed&&!results.some(y=>y.site==='live'&&y.test===x.test&&!y.passed));
-const summary={checks:results.length,liveFailures:issues.live.length,previewFailures:issues.preview.length,previewRegressions:onlyPreview.length};
-writeFileSync('interaction-report.json',JSON.stringify({summary,results,issues},null,2));
-console.log(JSON.stringify({summary,results,issues},null,2));
-if(onlyPreview.length)process.exitCode=1;
+const previewFailures=results.filter(x=>x.site==='preview'&&!x.passed);
+const liveFailures=results.filter(x=>x.site==='live'&&!x.passed);
+const regressions=previewFailures.filter(x=>!liveFailures.some(y=>y.name===x.name));
+const summary={checks:results.length,liveFailures:liveFailures.length,previewFailures:previewFailures.length,previewOnlyRegressions:regressions.length};
+writeFileSync('interaction-report.json',JSON.stringify({summary,results},null,2));
+console.log(JSON.stringify({summary,results},null,2));
+if(regressions.length)process.exitCode=1;
