@@ -87,5 +87,9 @@
     ],
     "newsletterHeading": "Stay updated",
     "newsletterDescription": "Get tool updates, maintenance alerts, and SEO tips."
+  },
+  "seo": {
+    "socialImage": "/og-image.svg",
+    "favicon": "/favicon.svg"
   }
 }
