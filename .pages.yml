@@ -110,6 +110,8 @@ content:
       - name: secondaryButton
         label: Secondary Button Text
         type: string
+      - { name: primaryUrl, label: Primary Button URL, type: string }
+      - { name: secondaryUrl, label: Secondary Button URL, type: string }
 
   - name: pricing_plans
     label: Pricing Plans
@@ -325,3 +327,68 @@ content:
         fields:
           - { name: heading, label: Heading, type: string }
           - { name: description, label: Description, type: text }
+
+  - name: ui_labels
+    label: Homepage - Small Labels, Status and CTA Buttons
+    type: file
+    path: content/ui-labels.json
+    format: json
+    fields:
+      - name: hero
+        label: Member Portal Preview
+        type: object
+        fields:
+          - { name: portalTitle, label: Portal Preview Title, type: string }
+          - { name: liveStatus, label: Live Badge, type: string }
+          - { name: accessLabel, label: Access Caption, type: string }
+          - { name: savingsLabel, label: Savings Caption, type: string }
+          - { name: savingsValue, label: Savings Amount, type: string }
+          - { name: uptimeLabel, label: Uptime Caption, type: string }
+          - { name: uptimeValue, label: Uptime Value, type: string }
+      - name: comparison
+        label: Savings Comparison Table
+        type: object
+        fields:
+          - { name: toolColumn, label: Table Tool Column, type: string }
+          - { name: originalColumn, label: Original Price Column, type: string }
+          - { name: groupColumn, label: Our Price Column, type: string }
+          - { name: totalLabel, label: Total Value Label, type: string }
+          - { name: offerPrice, label: Offer Price, type: string }
+          - { name: savingBadge, label: Savings Badge, type: string }
+          - { name: savingFoot, label: Savings Footer, type: string }
+          - { name: cta, label: Signup CTA Text, type: string }
+          - { name: ctaUrl, label: Signup CTA URL, type: string }
+      - name: access
+        label: Access Preview
+        type: object
+        fields:
+          - { name: cta, label: CTA Text, type: string }
+          - { name: ctaUrl, label: CTA URL, type: string }
+          - { name: extensionTitle, label: Extension Heading, type: string }
+          - { name: extensionBadge, label: Extension Status, type: string }
+      - name: status
+        label: Server Status Labels
+        type: object
+        fields:
+          - { name: uptimeLabel, label: Uptime Caption, type: string }
+          - { name: latencyLabel, label: Latency Caption, type: string }
+          - { name: responseLabel, label: Response Time Caption, type: string }
+          - { name: uptime30Label, label: Uptime 30d Caption, type: string }
+          - { name: loadLabel, label: Load Caption, type: string }
+          - name: cards
+            label: Status Information Cards
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{heading}" } }
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: description, label: Description, type: text }
+      - name: tools
+        label: Tool Request Section
+        type: object
+        fields:
+          - { name: requestHeading, label: Tool Request Heading, type: string }
+          - { name: requestDescription, label: Request Description, type: text }
+          - { name: viewButton, label: View Tools CTA, type: string }
+          - { name: requestButton, label: Request CTA, type: string }
+          - { name: viewUrl, label: View Tools URL, type: string }
+          - { name: requestUrl, label: Request URL, type: string }
