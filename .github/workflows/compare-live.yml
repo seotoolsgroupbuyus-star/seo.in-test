@@ -3,8 +3,11 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - scripts/compare-live.mjs
-      - .github/workflows/compare-live.yml
+      - 'scripts/compare-live.mjs'
+      - '.github/workflows/compare-live.yml'
+      - 'src/**'
+      - 'astro/**'
+      - 'content/**'
 permissions:
   contents: read
 jobs:
