@@ -1,0 +1,90 @@
+{
+  "header": {
+    "brand": "SEO Group Buy",
+    "loginText": "Login",
+    "loginUrl": "https://seogroupsbuy.com/users/login",
+    "signupText": "Get Started",
+    "signupUrl": "https://seogroupsbuy.com/users/signup",
+    "links": [
+      {
+        "label": "Home",
+        "url": "/"
+      },
+      {
+        "label": "Features",
+        "url": "/#features"
+      },
+      {
+        "label": "Tools",
+        "url": "/all-tools"
+      },
+      {
+        "label": "Pricing",
+        "url": "/pricing"
+      },
+      {
+        "label": "Blog",
+        "url": "/blog"
+      },
+      {
+        "label": "FAQ",
+        "url": "/faq"
+      }
+    ]
+  },
+  "footer": {
+    "brand": "SEO Group Buy",
+    "tagline": "Tools access. Team-ready. Fast.",
+    "description": "Premium SEO tools at group buy pricing. Built for agencies, freelancers, and teams who want results without huge monthly bills.",
+    "quickLinks": [
+      {
+        "label": "All tools",
+        "url": "/all-tools"
+      },
+      {
+        "label": "Pricing",
+        "url": "/pricing"
+      },
+      {
+        "label": "Blog",
+        "url": "/blog"
+      },
+      {
+        "label": "FAQ",
+        "url": "/faq"
+      },
+      {
+        "label": "About",
+        "url": "/about-us"
+      },
+      {
+        "label": "Contact",
+        "url": "/contact-us"
+      },
+      {
+        "label": "Affiliate",
+        "url": "/affiliate"
+      }
+    ],
+    "legalLinks": [
+      {
+        "label": "Privacy",
+        "url": "/privacy-policy"
+      },
+      {
+        "label": "Terms",
+        "url": "/terms"
+      },
+      {
+        "label": "Refunds",
+        "url": "/refund-policy"
+      },
+      {
+        "label": "DMCA",
+        "url": "/dmca"
+      }
+    ],
+    "newsletterHeading": "Stay updated",
+    "newsletterDescription": "Get tool updates, maintenance alerts, and SEO tips."
+  }
+}
