@@ -1,22 +1,14 @@
+import homeSections from '../../content/home-sections.json';
 import { motion } from "motion/react";
 
-const logos = [
-  { name: "Ahrefs", domain: "ahrefs.com" },
-  { name: "SEMrush", domain: "semrush.com" },
-  { name: "Moz", domain: "moz.com" },
-  { name: "Majestic", domain: "majestic.com" },
-  { name: "SpyFu", domain: "spyfu.com" },
-  { name: "Canva", domain: "canva.com" },
-  { name: "Grammarly", domain: "grammarly.com" },
-  { name: "Jasper", domain: "jasper.ai" },
-];
+const logos=homeSections.logoCloud.logos;
 
 export function LogoCloud() {
   return (
     <section className="py-12 bg-black border-y border-white/5">
       <div className="container mx-auto px-4">
         <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-zinc-600 mb-10">
-          Popular Tools You Get Access To
+          {homeSections.logoCloud.heading}
         </p>
         <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-10">
           {logos.map((logo, i) => (
