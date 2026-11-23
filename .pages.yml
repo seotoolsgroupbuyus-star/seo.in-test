@@ -335,12 +335,97 @@ content:
           - { name: heading, label: Heading, type: string }
           - { name: description, label: Description, type: text }
 
+  - name: product_details
+    label: Product Detail Cards and Benefit Tables (52 Products)
+    type: file
+    path: content/product-details.json
+    format: json
+    fields:
+      - name: products
+        label: Individually Editable Product Details
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{name}" } }
+        fields:
+          - { name: slug, label: Product URL Slug, type: string, readonly: true }
+          - { name: name, label: Product Name (reference), type: string, readonly: true }
+          - { name: teamDescription, label: Why Teams Use This Tool, type: text }
+          - name: benefitRows
+            label: Pricing and Features Benefit Table
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{benefit}" } }
+            fields:
+              - { name: benefit, label: Benefit Name, type: string }
+              - { name: helps, label: How It Helps, type: text }
+          - name: keyBenefits
+            label: Key Benefit Cards
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{title}" } }
+            fields:
+              - { name: title, label: Card Heading, type: string }
+              - { name: body, label: Card Description, type: text }
+
   - name: ui_labels
     label: Homepage - Small Labels, Status and CTA Buttons
     type: file
     path: content/ui-labels.json
     format: json
     fields:
+      - name: product
+        label: Product Page Headings, Breadcrumbs and Tables
+        type: object
+        fields:
+          - { name: buyNow, label: Buy Button, type: string }
+          - { name: pricingHeading, label: Pricing Section Heading, type: string }
+          - { name: planColumn, label: Plan Column, type: string }
+          - { name: priceColumn, label: Price Column, type: string }
+          - { name: monthly, label: Monthly Row, type: string }
+          - { name: yearly, label: Yearly Row, type: string }
+          - { name: monthSuffix, label: Per Month, type: string }
+          - { name: yearSuffix, label: Per Year, type: string }
+          - { name: benefitColumn, label: Benefit Column, type: string }
+          - { name: helpsColumn, label: Benefits Detail Column, type: string }
+          - { name: whatIsPrefix, label: What Is Prefix, type: string }
+          - { name: overview, label: Overview Card, type: string }
+          - { name: whyTeams, label: Why Teams Card, type: string }
+          - { name: keyBenefitsPrefix, label: Key Benefits Prefix, type: string }
+          - { name: homeCrumb, label: Home Breadcrumb, type: string }
+          - { name: toolsCrumb, label: Tools Breadcrumb, type: string }
+      - name: allTools
+        label: All Tools Directory
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: introBefore, label: Intro Before Count, type: string }
+          - { name: introAfter, label: Intro After Count, type: string }
+          - { name: searchPlaceholder, label: Search Placeholder, type: string }
+      - name: chat
+        label: Floating Chat Widget
+        type: object
+        fields:
+          - { name: heading, label: Chat Heading, type: string }
+          - { name: replyTime, label: Reply Time, type: string }
+          - { name: whatsappLabel, label: WhatsApp Label, type: string }
+          - { name: whatsappDescription, label: WhatsApp Subtitle, type: string }
+          - { name: facebookLabel, label: Facebook Label, type: string }
+          - { name: facebookDescription, label: Facebook Subtitle, type: string }
+          - { name: notConfigured, label: Missing Link Label, type: string }
+          - { name: tip, label: Keyboard Tip, type: string }
+          - { name: tipSuffix, label: Keyboard Tip Suffix, type: string }
+          - { name: openText, label: Open Button, type: string }
+          - { name: closeText, label: Close Button, type: string }
+          - { name: channels, label: Channel Text, type: string }
+          - { name: whatsappUrl, label: WhatsApp URL, type: string }
+          - { name: facebookUrl, label: Facebook URL, type: string }
+      - name: pricing
+        label: Pricing Section UI
+        type: object
+        fields:
+          - { name: heading, label: Section Heading, type: string }
+          - { name: description, label: Introduction, type: text }
+          - { name: available, label: Available Plans, type: string }
+          - { name: popular, label: Popular Badge, type: string }
+          - { name: perMonth, label: Monthly Label, type: string }
+          - { name: buyNow, label: Buy Button, type: string }
       - name: hero
         label: Member Portal Preview
         type: object
@@ -352,6 +437,13 @@ content:
           - { name: savingsValue, label: Savings Amount, type: string }
           - { name: uptimeLabel, label: Uptime Caption, type: string }
           - { name: uptimeValue, label: Uptime Value, type: string }
+          - name: tools
+            label: Preview Tool Cards
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{name}" } }
+            fields:
+              - { name: name, label: Tool Name, type: string }
+              - { name: domain, label: Tool Logo Domain, type: string }
       - name: comparison
         label: Savings Comparison Table
         type: object
@@ -373,6 +465,13 @@ content:
           - { name: ctaUrl, label: CTA URL, type: string }
           - { name: extensionTitle, label: Extension Heading, type: string }
           - { name: extensionBadge, label: Extension Status, type: string }
+          - name: tools
+            label: Extension Tool Cards
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{name}" } }
+            fields:
+              - { name: name, label: Tool Name, type: string }
+              - { name: domain, label: Tool Logo Domain, type: string }
       - name: status
         label: Server Status Labels
         type: object
