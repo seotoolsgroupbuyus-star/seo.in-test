@@ -1,3 +1,4 @@
+import cms from '../../content/home-extras.json';
 import {
   Accordion,
   AccordionContent,
@@ -24,9 +25,9 @@ export function FAQ({showIntro = true}: {showIntro?: boolean}) {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">Got Questions About Group Buy SEO Tools?</h2>
+              <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">{cms.faqIntro.heading}</h2>
               <p className="text-xl text-zinc-400">
-                Clear answers about SEO group buy access, tool usage, privacy, and support. If you are new to group buy SEO tools you will find this section helpful.
+                {cms.faqIntro.description}
               </p>
             </motion.div>
           ) : (
