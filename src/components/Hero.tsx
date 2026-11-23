@@ -1,3 +1,4 @@
+import labels from '../../content/ui-labels.json';
 import { motion } from "motion/react";
 import { ArrowRight, Zap, TrendingUp, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -42,7 +43,7 @@ export function Hero() {
 
             <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4">
               <a
-                href={SIGNUP_URL}
+                href={homepage.primaryUrl || SIGNUP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-blue-600 px-10 text-lg font-bold text-white transition-colors hover:bg-blue-700"
@@ -50,7 +51,7 @@ export function Hero() {
                 {homepage.primaryButton} <ArrowRight className="h-5 w-5" />
               </a>
               <Link
-                to="/all-tools"
+                to={homepage.secondaryUrl || "/all-tools"}
                 className="inline-flex h-14 w-full sm:w-auto items-center justify-center rounded-full border border-white/10 px-10 text-lg font-bold text-white transition-colors hover:bg-white/5"
               >
                 {homepage.secondaryButton}
@@ -70,11 +71,11 @@ export function Hero() {
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-3">
                     <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white">S</div>
-                    <span className="font-bold text-sm tracking-tight">Member Portal</span>
+                    <span className="font-bold text-sm tracking-tight">{labels.hero.portalTitle}</span>
                   </div>
                   <div className="flex gap-2">
                     <div className="h-2 w-2 rounded-full bg-green-500" />
-                    <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Live Status</span>
+                    <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">{labels.hero.liveStatus}</span>
                   </div>
                 </div>
 
@@ -98,7 +99,7 @@ export function Hero() {
                       </div>
                       <p className="text-xs font-bold mb-3">{tool.name}</p>
                       <button className="w-full py-1.5 bg-blue-600/20 text-blue-400 text-[10px] font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-all">
-                        ACCESS
+                        {labels.hero.accessLabel}
                       </button>
                     </div>
                   ))}
@@ -119,8 +120,8 @@ export function Hero() {
                   <TrendingUp className="h-6 w-6 text-green-500" />
                 </div>
                 <div>
-                  <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold">Savings</p>
-                  <p className="text-2xl font-bold font-display text-green-500">$1,450/mo</p>
+                  <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold">{labels.hero.savingsLabel}</p>
+                  <p className="text-2xl font-bold font-display text-green-500">{labels.hero.savingsValue}</p>
                 </div>
               </div>
             </motion.div>
@@ -135,8 +136,8 @@ export function Hero() {
                   <Zap className="h-6 w-6 text-blue-500" />
                 </div>
                 <div>
-                  <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold">Uptime</p>
-                  <p className="text-2xl font-bold font-display text-blue-500">99.9%</p>
+                  <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold">{labels.hero.uptimeLabel}</p>
+                  <p className="text-2xl font-bold font-display text-blue-500">{labels.hero.uptimeValue}</p>
                 </div>
               </div>
             </motion.div>
