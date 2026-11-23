@@ -1,6 +1,7 @@
 import {ArrowRight} from 'lucide-react';
 import {Link} from 'react-router-dom';
 import {BrandLogo} from './BrandLogo';
+import site from '../../content/site.json';
 
 export function Footer() {
   return (
@@ -18,54 +19,31 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <BrandLogo />
                 <div className="leading-tight">
-                  <div className="text-xl font-bold tracking-tight font-display text-white">SEO Group Buy</div>
-                  <div className="text-xs text-zinc-500">Tools access. Team-ready. Fast.</div>
+                  <div className="text-xl font-bold tracking-tight font-display text-white">{site.footer.brand}</div>
+                  <div className="text-xs text-zinc-500">{site.footer.tagline}</div>
                 </div>
               </div>
 
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-400">
-                Premium SEO tools at group buy pricing. Built for agencies, freelancers, and teams who want
-                results without huge monthly bills.
+                {site.footer.description}
               </p>
             </div>
 
             <div className="lg:col-span-4">
               <p className="text-xs font-bold uppercase tracking-widest text-white/90">Quick links</p>
               <div className="mt-5 grid grid-cols-2 gap-x-10 gap-y-3 text-sm text-zinc-400">
-                <Link to="/all-tools" className="group inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500/60 transition-colors group-hover:bg-blue-400" />
-                  All tools
-                </Link>
-                <Link to="/pricing" className="group inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500/60 transition-colors group-hover:bg-blue-400" />
-                  Pricing
-                </Link>
-                <Link to="/blog" className="group inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500/60 transition-colors group-hover:bg-blue-400" />
-                  Blog
-                </Link>
-                <Link to="/faq" className="group inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500/60 transition-colors group-hover:bg-blue-400" />
-                  FAQ
-                </Link>
-                <Link to="/about-us" className="group inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500/60 transition-colors group-hover:bg-blue-400" />
-                  About
-                </Link>
-                <Link to="/contact-us" className="group inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500/60 transition-colors group-hover:bg-blue-400" />
-                  Contact
-                </Link>
-                <Link to="/affiliate" className="group inline-flex items-center gap-2 transition-colors hover:text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500/60 transition-colors group-hover:bg-blue-400" />
-                  Affiliate
-                </Link>
+                {site.footer.quickLinks.map(link=>(
+                  <Link key={link.url} to={link.url} className="group inline-flex items-center gap-2 transition-colors hover:text-white">
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500/60 transition-colors group-hover:bg-blue-400" />
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </div>
 
             <div className="lg:col-span-4">
-              <p className="text-xs font-bold uppercase tracking-widest text-white/90">Stay updated</p>
-              <p className="mt-4 text-sm text-zinc-400">Get tool updates, maintenance alerts, and SEO tips.</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-white/90">{site.footer.newsletterHeading}</p>
+              <p className="mt-4 text-sm text-zinc-400">{site.footer.newsletterDescription}</p>
 
               <form
                 className="mt-4 flex gap-2"
@@ -91,20 +69,13 @@ export function Footer() {
           </div>
 
           <div className="mt-12 flex flex-col gap-4 border-t border-white/5 pt-8 text-sm text-zinc-500 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} SEO Group Buy. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} {site.footer.brand}. All rights reserved.</p>
             <div className="flex flex-wrap gap-x-6 gap-y-2">
-              <Link to="/privacy-policy" className="hover:text-white transition-colors">
-                Privacy
-              </Link>
-              <Link to="/terms" className="hover:text-white transition-colors">
-                Terms
-              </Link>
-              <Link to="/refund-policy" className="hover:text-white transition-colors">
-                Refunds
-              </Link>
-              <Link to="/dmca" className="hover:text-white transition-colors">
-                DMCA
-              </Link>
+              {site.footer.legalLinks.map(link=>(
+                <Link key={link.url} to={link.url} className="hover:text-white transition-colors">
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
