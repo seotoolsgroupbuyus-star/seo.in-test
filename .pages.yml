@@ -107,3 +107,33 @@ content:
       - name: secondaryButton
         label: Secondary Button Text
         type: string
+
+  - name: pricing_plans
+    label: Pricing Plans
+    type: file
+    path: content/plans.json
+    format: json
+    fields:
+      - name: plans
+        label: Six Pricing Plans
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Plan Name, type: string }
+          - { name: price, label: Monthly Price USD, type: string }
+          - { name: description, label: Plan Description, type: text }
+          - { name: buyNowHref, label: Existing Checkout URL, type: string }
+          - { name: features, label: Included Features, type: string, list: true }
+  - name: faqs
+    label: Frequently Asked Questions
+    type: file
+    path: content/faqs.json
+    format: json
+    fields:
+      - name: faqs
+        label: Questions and Answers
+        type: object
+        list: true
+        fields:
+          - { name: question, label: Question, type: string }
+          - { name: answer, label: Answer, type: text }
