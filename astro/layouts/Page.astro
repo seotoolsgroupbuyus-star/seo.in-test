@@ -1,7 +1,7 @@
 ---
 import '../styles.css';
 import site from '../../content/site.json';
-const {title, description, pathname='/', robots='noindex,nofollow', product}=Astro.props;
+const {title, description, pathname='/', robots='index,follow', product}=Astro.props;
 const origin='https://seogroupbuy.in';
 const canonical=origin + (pathname==='/'?'/':pathname.replace(/\/$/,'') );
 const ogImage=new URL(site.seo.socialImage||'/og-image.svg',origin).href;
