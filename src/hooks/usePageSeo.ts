@@ -53,7 +53,7 @@ export function usePageSeo({
     const url = `${SITE_ORIGIN}${path.startsWith('/') ? path : `/${path}`}`;
     document.title = brandedTitle;
     setMetaName('description', description);
-    setMetaName('robots', import.meta.env.PUBLIC_PRODUCTION_INDEXABLE === 'true' ? robots : 'noindex,nofollow');
+    setMetaName('robots', robots);
 
     if (!omitCanonical) {
       setCanonical(url);
