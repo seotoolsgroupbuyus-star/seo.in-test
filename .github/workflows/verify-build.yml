@@ -46,6 +46,7 @@ jobs:
           const home = fs.readFileSync('dist/index.html','utf8');
           console.log('Expected sitemap URLs:',expected.length,'Missing routes:',missing.length);
           if(missing.length) {console.error('Missing:',missing);process.exitCode=1}
-          if(!home.includes('noindex,nofollow')) throw new Error('Missing preview robots guard');
+          if(!/<meta[^>]+name="robots"[^>]+content="index,follow"/.test(home)) throw new Error('Homepage must be indexable: robots meta index,follow');
+          if(home.includes('noindex,nofollow')) throw new Error('Production homepage must not contain noindex,nofollow');
           if(!home.includes('<h1')) throw new Error('Missing SSR homepage H1');
           NODE
