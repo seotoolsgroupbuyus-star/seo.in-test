@@ -15,7 +15,7 @@ export function getStaticPaths(){
 }
 const {path,title,description,product}=Astro.props;
 const pathname='/'+path.replace(/^\/+|\/+$/g,'');
-const robots=import.meta.env.PUBLIC_PRODUCTION_INDEXABLE==='true'?'index,follow':'noindex,nofollow';
+const robots='index,follow';
 ---
 <Page title={title} description={description} pathname={pathname} robots={robots} product={product}>
  <OriginalApp path={pathname} client:load />
