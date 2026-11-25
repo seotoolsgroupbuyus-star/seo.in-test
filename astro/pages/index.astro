@@ -2,7 +2,7 @@
 import Page from '../layouts/Page.astro';
 import OriginalApp from '../components/OriginalApp';
 import {DEFAULT_META} from '../../src/seo/site';
-const robots=import.meta.env.PUBLIC_PRODUCTION_INDEXABLE==='true'?'index,follow':'noindex,nofollow';
+const robots='index,follow';
 ---
 <Page title={DEFAULT_META.title} description={DEFAULT_META.description} pathname="/" robots={robots}>
   <OriginalApp path="/" client:load />
