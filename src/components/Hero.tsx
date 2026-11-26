@@ -91,9 +91,9 @@ export function Hero() {
                         />
                       </div>
                       <p className="text-xs font-bold mb-3">{tool.name}</p>
-                      <button className="w-full py-1.5 bg-blue-600/20 text-blue-400 text-[10px] font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-all">
+                      <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="block w-full py-1.5 bg-blue-600/20 text-blue-400 text-center text-[10px] font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-all">
                         {labels.hero.accessLabel}
-                      </button>
+                      </a>
                     </div>
                   ))}
                 </div>
