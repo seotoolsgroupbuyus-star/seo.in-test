@@ -91,12 +91,12 @@
     ]
   },
   "status": {
-    "badge": "All Systems Operational",
+    "badge": "Tool availability information",
     "heading": "Reliable Access That Keeps You Working",
-    "description": "We keep a close eye on tool access day and night. When a seat gets slow or a login stops working, we rotate sessions fast so your SEO audits and keyword research do not get stuck.",
+    "description": "Explore our supported premium tools. Actual availability, session limits, and access performance can change. Contact support for current service status.",
     "averageUptime": "99.99%",
     "averageLatency": "112ms",
-    "supportedHeading": "Supported Tools",
+    "supportedHeading": "Supported premium tools",
     "tools": [
       {
         "name": "Ahrefs",
