@@ -11,6 +11,8 @@ import {
 } from 'recharts';
 import { motion } from "motion/react";
 import { TrendingUp, Users, Globe, ArrowUpRight, Search, Filter } from "lucide-react";
+import { useState } from "react";
+import { SHOP_SIGNUP_URL } from "../data/shopLinks";
 
 const trafficData = [
   { name: 'Jan', traffic: 4000, keywords: 2400 },
@@ -32,6 +34,8 @@ const rankingData = [
 ];
 
 export function RealDashboard() {
+  const [recentOnly, setRecentOnly] = useState(false);
+  const visibleTraffic = recentOnly ? trafficData.slice(-3) : trafficData;
   return (
     <section className="py-24 bg-black relative overflow-hidden">
       <div className="container mx-auto px-4">
@@ -45,7 +49,7 @@ export function RealDashboard() {
           </motion.h2>
           <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
             Access the same data visualization tools used by Fortune 500 SEO teams. 
-            Real-time tracking, keyword monitoring, and competitor analysis.
+            The charts below are illustrative sample data, not a live account or real-time monitoring service.
           </p>
         </div>
 
@@ -57,8 +61,8 @@ export function RealDashboard() {
                 <Search className="text-white h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-xl font-bold font-display">Project: seohub-global-audit</h3>
-                <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Last updated: 2 mins ago</p>
+                <h3 className="text-xl font-bold font-display">Example analytics dashboard</h3>
+                <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Sample data — not live</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -73,11 +77,11 @@ export function RealDashboard() {
                   </div>
                 ))}
               </div>
-              <button className="h-9 px-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm transition-colors flex items-center gap-2">
-                <Filter className="h-4 w-4" /> Filter
+              <button type="button" onClick={() => setRecentOnly(value => !value)} aria-pressed={recentOnly} className="h-9 px-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm transition-colors flex items-center gap-2">
+                <Filter className="h-4 w-4" /> {recentOnly ? "Show all months" : "Last 3 months"}
               </button>
-              <button className="h-9 px-4 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-bold transition-colors">
-                Export PDF
+              <button type="button" onClick={() => window.print()} className="h-9 px-4 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-bold transition-colors" title="Open browser print dialog; choose Save as PDF">
+                Print / Save PDF
               </button>
             </div>
           </div>
@@ -120,7 +124,7 @@ export function RealDashboard() {
                 </div>
               </div>
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={trafficData}>
+                <AreaChart data={visibleTraffic}>
                   <defs>
                     <linearGradient id="colorTraffic" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
@@ -163,9 +167,9 @@ export function RealDashboard() {
                 ))}
               </div>
               <div className="mt-8 pt-6 border-t border-white/5">
-                <button className="w-full h-10 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold transition-colors">
-                  View All 1,240 Keywords
-                </button>
+                <a href={SHOP_SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full h-10 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold transition-colors">
+                  Explore member access
+                </a>
               </div>
             </div>
           </div>
