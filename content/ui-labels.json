@@ -1,12 +1,12 @@
 {
   "hero": {
     "portalTitle": "Member Portal",
-    "liveStatus": "Live Status",
+    "liveStatus": "Portal Preview",
     "accessLabel": "ACCESS",
     "savingsLabel": "Savings",
     "savingsValue": "$1,450/mo",
-    "uptimeLabel": "Uptime",
-    "uptimeValue": "99.9%",
+    "uptimeLabel": "Dashboard data",
+    "uptimeValue": "Illustrative",
     "tools": [
       {
         "name": "Ahrefs",
